@@ -5,7 +5,7 @@ class RconCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'rcon',
-            group: 'random',
+            group: 'minecraft',
             memberName: 'rcon',
             description: 'Make a Rcon connection to my minecraft server!'
         });
