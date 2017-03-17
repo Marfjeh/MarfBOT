@@ -12,9 +12,7 @@ class StatusCommand extends commando.Command {
     }
 
     async run(message, args) {
-      bot.on('ready', () =>{
-        bot.user.setGame(args);
-      });
+        message.reply("Does not work use >Status instead.");
       }
 
 }

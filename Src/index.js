@@ -30,9 +30,6 @@ bot.on('message' , message =>{
 
 });
 
-
-
-
 bot.login('MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0');
 
 
