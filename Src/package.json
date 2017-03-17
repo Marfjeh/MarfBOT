@@ -1,0 +1,17 @@
+{
+  "name": "marfbot",
+  "version": "0.0.1",
+  "description": "a bot for discord.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CrazyMarf",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.0.0",
+    "discord.js-commando": "^0.9.0",
+    "modern-rcon": "^1.0.3",
+    "rcon-client": "^3.0.2"
+  }
+}
