@@ -2,6 +2,7 @@ const commando = require('discord.js-commando');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
+const cmd=require('node-cmd');
 
 const bot = new commando.Client({
   commandPrefix: '>',
@@ -87,7 +88,6 @@ bot.setProvider(
 ).catch(console.error);
 
 bot.login('MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0');
-
 
 /*function CommandIs(str, msg)
 {

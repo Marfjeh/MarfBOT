@@ -12,7 +12,7 @@ class RconCommand extends commando.Command {
     }
 
     async run(message, args) {
-      if (bot.CommandoClient.isOwner(message.author) == true)
+      if (args != null)
       {
         const Rcon = require('modern-rcon');
         const rcon = new Rcon('localhost', 'lel');
@@ -26,7 +26,7 @@ class RconCommand extends commando.Command {
         });
         }
         else {
-          message.reply("Permission Error.");
+          message.reply("Usage: !rcon (command)");
         }
       }
     }
