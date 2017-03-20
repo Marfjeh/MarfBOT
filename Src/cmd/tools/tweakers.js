@@ -28,6 +28,11 @@ class tweakersCommand extends commando.Command {
                 nieuwsberichten_url.push(entry.link);
             });
             
+            if (err == true)
+            {
+                message.channel.sendMessage("Error!");
+            }
+            
             if (args == "2") {
                 setTimeout(function(){
                message.channel.sendEmbed({

@@ -90,6 +90,19 @@ bot.setProvider(
 
 bot.login('MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0');
 
+bot.on('message', message => {  
+	if (message.content.startsWith("Ik ben MarfBOT niet.")) { //MegaXLR Bot EasterEgg.
+		message.reply("Maar ik wel. :P");
+	}
+	
+	var roll = Math.floor(Math.random() * 7) + 1;
+	if (message.content.includes("[answers are given in 2 decimals]") && roll == 5) { //Math battles EasterEgg, Its random.
+		var data =  Math.random().toFixed(2);
+		message.reply("Not you again! I'm too lazy to calculate it, so my guess is: " + data);
+		message.channel.sendMessage(".take " + data);
+	}
+});
+
 /*function CommandIs(str, msg)
 {
   return msg.content.toLowerCase().startsWith(">" + str);

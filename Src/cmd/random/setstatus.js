@@ -12,7 +12,7 @@ class StatusCommand extends commando.Command {
     }
 
     async run(message, args) {
-        message.reply("Does not work use >Status instead.");
+        message.reply("Error! Exception: undefined");
       }
 
 }

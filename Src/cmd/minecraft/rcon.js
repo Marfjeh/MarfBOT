@@ -18,7 +18,7 @@ class RconCommand extends commando.Command {
         const rcon = new Rcon('localhost', 'lel');
 
         rcon.connect().then(() => {
-          return rcon.send(args); // That's a command for Minecraft
+          return rcon.send(args);
         }).then(res => {
           message.channel.sendMessage("[Command] ```/" + args + "``` [Rcon Server Response] ```" + res + "```");
         }).then(() => {

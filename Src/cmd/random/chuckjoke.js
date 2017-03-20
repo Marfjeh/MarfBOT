@@ -14,7 +14,7 @@ class chuckjokeCommand extends commando.Command {
     }
 
     async run(message, args) {
-        message.channel.sendMessage("WIP");
+        message.channel.sendMessage("MarfBot Error! Exception: ``` . ```");
     }
 }
 
