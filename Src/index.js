@@ -12,7 +12,8 @@ clog('Info ', "MarfBot Starting...");
 
 bot.registry.registerGroups([
   ['random', 'Random'],
-  ['minecraft', 'Minecraft']
+  ['minecraft', 'Minecraft'],
+  ['tools', 'Tools']
 ]);
 bot.registry.registerDefaults();
 bot.registry.registerCommandsIn(__dirname + "/cmd");
