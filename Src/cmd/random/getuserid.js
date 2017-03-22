@@ -3,15 +3,16 @@ const commando = require('discord.js-commando');
 class getnameCommand extends commando.Command {
     constructor(client) {
         super(client, {
-            name: 'getname',
+            name: 'getuserid',
             group: 'random',
-            memberName: 'getname',
+            memberName: 'getuserid',
             description: 'Returns your name id.'
         });
     }
 
     async run(message, args) {
-      message.reply("```" + message.author + "```");
+      message.author.sendMessage("Your user id is: ```" + message.author + "```");
+      message.reply("Send you a DM with your ID.");
     }
 }
 

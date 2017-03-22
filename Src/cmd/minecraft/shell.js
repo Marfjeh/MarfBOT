@@ -9,41 +9,26 @@ class shellCommand extends commando.Command {
             description: 'Runs a Shell command!'
         });
     }
-
+    
     async run(message, args) {
-      message.reply("```" + message.author + "```");
-      var sys = require('sys')
-
-var exec = require('child_process').exec;
-
-var child;
-
-// executes `pwd`
-
-child = exec("pwd", function (error, stdout, stderr) {
-
-   message.reply('stdout: ' + stdout);
-
-   message.reply('stderr: ' + stderr);
-
-  if (error !== null) {
-
-     message.reply('exec error: ' + error);
-
-  }
-
-});
-
-// or more concisely
-
-var sys = require('sys')
-
-var exec = require('child_process').exec;
-
-function puts(error, stdout, stderr) { sys.puts(stdout) }
-
-exec("ls -la", puts);
+    
+    if (message.author == "<@218310787289186304>")
+    {
+        
+        var exec = require('child_process').exec;
+        var coffeeProcess = exec('tail -f /home/marf/Cloud9/mc/logs/latest.log ---disable-inotify');
+    
+        coffeeProcess.stdout.on('data', function(data) {
+            message.channel.sendMessage(data);
+        });
     }
+    else
+    {
+        message.reply("Sorry, only @Crazymarf#0020 can do it. because this command is still in beta mode and may be insecure.");
+    }
+   
+    }
+    
 }
 
 module.exports = shellCommand;

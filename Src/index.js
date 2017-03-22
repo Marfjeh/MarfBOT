@@ -24,7 +24,7 @@ bot
 	.on('debug', dlog)
 	.on('ready', () => {
 		nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-    bot.user.setGame("BOTNET Simulator");
+    bot.user.setGame(">help for list of commands.");
     nlog("setting: .setGame to BOTNET Simulator");
 	})
 	.on('disconnect', () => { console.warn('Disconnected!'); })
@@ -100,6 +100,10 @@ bot.on('message', message => {
 		var data =  Math.random().toFixed(2);
 		message.reply("Not you again! I'm too lazy to calculate it, so my guess is: " + data);
 		message.channel.sendMessage(".take " + data);
+	}
+	
+	if (message.content.includes("Please make me yours and put it in me!") && roll == 5) { //dickbot EasterEgg.
+		message.channel.sendMessage("DONT. DO. IT.\nWhy would you ever put your dick in @Dickbot ?");
 	}
 });
 
