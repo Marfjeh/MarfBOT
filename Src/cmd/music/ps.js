@@ -24,7 +24,7 @@ class DiceRollCommand extends commando.Command {
         .then(connection => {
                 const dispatcher = connection.playFile(MusicFolder + args + '.ogg');
                 marfBOT.clog("Ps   ", "Playing: " + args);
-                dispatcher.on('end', () => connection.disconnect());
+                //dispatcher.on('end', () => connection.disconnect());
         })
         .catch(marfBOT.elog);
         
