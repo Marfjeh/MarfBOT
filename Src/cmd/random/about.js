@@ -15,7 +15,7 @@ class StatusCommand extends commando.Command {
         message.channel.sendEmbed({
                 title: "MarfBOT",
                 description: "Hi I'm MarfBOT! Im giving basic infromation, i can send you the latest weather, News or tech news. i also do more! \nBy Marvin Ferwerda, Crazymarf#0020",
-                url: 'https://github.com/Marfjeh/MarfBOT',
+                url: 'https://github.com/Marfjeh/MarfBOT_Issues',
                 fields: [
                 {
                     name:  "I'm running on",
@@ -23,7 +23,7 @@ class StatusCommand extends commando.Command {
                 },
                 {
                     name: "Version info",
-                    value: "0.3"
+                    value: "0.5_2"
                 },
                 {
                     name: "Command list",
