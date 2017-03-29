@@ -7,7 +7,7 @@ const client = new discord.Client();
 const MusicFolder = __dirname + "/../../sounds/";
 var soundlist = "";
 
-class DiceRollCommand extends commando.Command {
+class PsCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'ps',
@@ -42,4 +42,4 @@ class DiceRollCommand extends commando.Command {
     }
 }
 
-module.exports = DiceRollCommand;
+module.exports = PsCommand;

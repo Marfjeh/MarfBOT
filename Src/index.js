@@ -4,7 +4,7 @@
 *	@author Marvin Ferwerda
 */
 const commando = require('discord.js-commando');
-const music = require('discord.js-music');
+//const music = require('discord.js-music');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
@@ -16,7 +16,7 @@ const bot = new commando.Client({
   owner: '218310787289186304'
 });
 
-music(bot, {
+/*music(bot, {
 	youtube: "AIzaSyA6KSfT_AbF8bSSvBNfbXe26NEuA1hdb-Y",
 	prefix: "<",
 	volume: 100,
@@ -27,7 +27,7 @@ music(bot, {
 		safeSearch: 'none',
 		videoDefinition: 'high',
 },
-});
+});*/
 
 marfBOT.clog('Info ', "MarfBot Starting...");
 
@@ -107,12 +107,6 @@ bot.on('message', message => {
 	}
 	
 });
-
-var playmusic = function (mess, arg) {
-	music.playm(mess, arg);
-}
-
-exports.playmusic = playmusic;
 
 /*function CommandIs(str, msg)
 {
