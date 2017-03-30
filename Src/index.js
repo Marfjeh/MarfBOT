@@ -3,31 +3,17 @@
 *	@name MarfBot Bootstrapper
 *	@author Marvin Ferwerda
 */
+
 const commando = require('discord.js-commando');
-//const music = require('discord.js-music');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
-const cmd=require('node-cmd');
-const marfBOT = require("./MarfBOT.js")
+const marfBOT = require("./MarfBOT.js");
 
 const bot = new commando.Client({
-  commandPrefix: '>',
+  commandPrefix: ']',
   owner: '218310787289186304'
 });
-
-/*music(bot, {
-	youtube: "AIzaSyA6KSfT_AbF8bSSvBNfbXe26NEuA1hdb-Y",
-	prefix: "<",
-	volume: 100,
-	anyoneCanSkip: true,
-	clearInvoker: false, 
-	allowSearch: true,
-	yt: {
-		safeSearch: 'none',
-		videoDefinition: 'high',
-},
-});*/
 
 marfBOT.clog('Info ', "MarfBot Starting...");
 
@@ -46,7 +32,7 @@ bot
 	.on('debug', marfBOT.dlog)
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-    bot.user.setGame(">help for list of commands.");
+    bot.user.setGame("]help for list of commands.");
     marfBOT.nlog("setting: .setGame to BOTNET Simulator");
 	})
 	.on('disconnect', () => { console.warn('Disconnected!'); })
@@ -107,39 +93,3 @@ bot.on('message', message => {
 	}
 	
 });
-
-/*function CommandIs(str, msg)
-{
-  return msg.content.toLowerCase().startsWith(">" + str);
-}
-
-bot.on('message' , message =>{
-
-  //Splitter For Command Argument system. and messy...
-  var args_stage1 = message.content.split(/[ ]+/);
-  var args = "";
-  for(var i = 1, len = args_stage1.length; i < len; i++)
-  {
-    var args = args + args_stage1[i] + " ";
-  }
-  args = args.substring(0, args.length - 1); // remove the last space.
-  //end splitter
-
-
-  if (CommandIs ("tester", message)) {
-    message.reply(args);
-  }
-
-  if (CommandIs ("Status", message)) {
-    bot.user.setGame(args.toString());
-    clog('Command_Execute', "Set Status to: " + args)
-    message.reply("Set Status to: " + args);
-  }
-
-  if (CommandIs ("getname", message)) {
-    var args = message.content.substring(9);
-    message.reply(message.author);
-    clog('debug', message.author);
-  }
-
-});*/
