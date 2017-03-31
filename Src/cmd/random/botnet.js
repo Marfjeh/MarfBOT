@@ -42,7 +42,6 @@ class BotnetCommand extends commando.Command {
       "   | |\n" +
       "   | |\n" +
       "   |_|\n\n```");
-        console.log("Oh no someone has detected a botnet!");
     }
 }
 

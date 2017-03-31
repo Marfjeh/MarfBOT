@@ -23,7 +23,6 @@ class MuntCommand extends commando.Command {
           default:
 
         }
-        console.log("Run !munt output: " + roll);
     }
 }
 
