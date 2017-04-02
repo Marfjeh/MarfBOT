@@ -11,16 +11,23 @@ class weerCommand extends commando.Command {
     }
 
     async run(message, args) {
+        message.reply("Hang on, Getting tha file!");
         var date = new Date();
         var n = date.toDateString();
         var time = date.toLocaleTimeString();
         
+        var exec = require('child_process').exec;
+        exec('rm /var/www/html/MarfBOT/weer.gif');
+        exec('wget -O /var/www/html/MarfBOT/weer.gif http://api.buienradar.nl/image/1.0/RadarMapNL');
+    
+        
+        //"url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",
         message.channel.sendMessage({
         "embed": {
                 title: 'Buienradar',
                 url: 'http://www.buienradar.nl/',
                 "image": {
-                "url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",
+                "url": "http://fileserver.marfprojects.nl/MarfBOT/weer.gif?random=" + Math.random(),
                 },
                 footer: {
                     text: n + " " + time,

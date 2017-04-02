@@ -23,7 +23,7 @@ class StatusCommand extends commando.Command {
                 },
                 {
                     name: "Version info",
-                    value: "0.5_4"
+                    value: "0.6"
                 },
                 {
                     name: "Command list",
