@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class tweakersCommand extends commando.Command {
+class DumpertCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'dumpert',
@@ -156,4 +156,4 @@ class tweakersCommand extends commando.Command {
     }
 }
 
-module.exports = tweakersCommand;
+module.exports = DumpertCommand;

@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class tweakersCommand extends commando.Command {
+class p2000Command extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'p2000',
@@ -159,4 +159,4 @@ class tweakersCommand extends commando.Command {
     }
 }
 
-module.exports = tweakersCommand;
+module.exports = p2000Command;

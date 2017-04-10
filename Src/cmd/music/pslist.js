@@ -1,7 +1,6 @@
-const commando = require('discord.js-commando');
-const marfBOT = require("../../MarfBOT.js");
-const bot = new commando.Client();
-const fs = require("fs");
+const commando = require('discord.js-commando'),
+      marfBOT = require("../../MarfBOT.js"),
+      fs = require("fs");
 
 class pslistCommand extends commando.Command {
     constructor(client) {

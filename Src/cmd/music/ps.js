@@ -1,11 +1,7 @@
-const commando = require('discord.js-commando');
-const marfBOT = require("../../MarfBOT.js");
-const discord = require("discord.js");
-const ytdl = require('ytdl-core');
-const fs = require('fs');
-const client = new discord.Client();
-const MusicFolder = __dirname + "/../../sounds/";
-var soundlist = "";
+const   commando = require('discord.js-commando'),
+        marfBOT = require("../../MarfBOT.js"),
+        discord = require("discord.js"),
+        MusicFolder = __dirname + "/../../sounds/";
 
 class PsCommand extends commando.Command {
     constructor(client) {

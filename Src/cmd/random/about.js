@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
-const bot = new commando.Client();
 
-class StatusCommand extends commando.Command {
+class AboutCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'about',
@@ -35,4 +34,4 @@ class StatusCommand extends commando.Command {
 
 }
 
-module.exports = StatusCommand;
+module.exports = AboutCommand;

@@ -1,10 +1,10 @@
-const commando = require('discord.js-commando');
-const marfBOT = require("../../MarfBOT.js");
-const discord = require("discord.js");
-const ytdl = require('ytdl-core');
-const client = new discord.Client();
+const   commando = require('discord.js-commando'),
+        marfBOT = require("../../MarfBOT.js"),
+        discord = require("discord.js"),
+        ytdl = require('ytdl-core'),
+        client = new discord.Client();
 
-class DiceRollCommand extends commando.Command {
+class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'play',
@@ -28,4 +28,4 @@ class DiceRollCommand extends commando.Command {
     }
 }
 
-module.exports = DiceRollCommand;
+module.exports = PlayCommand;

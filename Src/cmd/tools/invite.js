@@ -1,7 +1,7 @@
 //https://discordapp.com/oauth2/authorize?client_id=263948498351685632&scope=bot&permissions=0
 const commando = require('discord.js-commando');
 
-class weerCommand extends commando.Command {
+class InviteCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'invite',
@@ -20,4 +20,4 @@ class weerCommand extends commando.Command {
     }
 }
 
-module.exports = weerCommand;
+module.exports = InviteCommand;

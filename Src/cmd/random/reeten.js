@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
-const marfBOT = require("../../MarfBOT.js");
+const commando = require('discord.js-commando'),
+      marfBOT = require("../../MarfBOT.js");
 
-class getnameCommand extends commando.Command {
+class reetenCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'reeten',
@@ -30,4 +30,4 @@ class getnameCommand extends commando.Command {
 
 }
 
-module.exports = getnameCommand;
+module.exports = reetenCommand;

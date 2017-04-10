@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const bot = new commando.Client();
 
 class RconCommand extends commando.Command {
     constructor(client) {

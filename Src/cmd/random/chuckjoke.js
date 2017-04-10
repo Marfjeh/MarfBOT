@@ -1,5 +1,5 @@
-const commando = require('discord.js-commando');
-const url = require("url");
+const   commando = require('discord.js-commando'),
+        url = require("url");
 
 var api = "http://api.icndb.com/jokes/random/";
 
