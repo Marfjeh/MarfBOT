@@ -9,7 +9,10 @@ const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
 const marfBOT = require("./MarfBOT.js");
+
 const loginsecret = "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0";
+const game = "]help for list of commands.";
+
 const bot = new commando.Client({
   commandPrefix: ']',
   owner: '218310787289186304'
@@ -32,11 +35,11 @@ bot
 	.on('debug', marfBOT.dlog)
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-    bot.user.setGame("]help for list of commands.");
-    marfBOT.nlog("setting: .setGame to BOTNET Simulator");
+    bot.user.setGame(game);
+    marfBOT.nlog("Set playing: " + game);
 	})
-	.on('disconnect', () => { console.warn('Disconnected!'); })
-	.on('reconnecting', () => { console.warn('Reconnecting...'); })
+	.on('disconnect', () => { marfBOT.wlog('Disconnected!'); })
+	.on('reconnecting', () => { marfBOT.wlog('Reconnecting...'); })
 	.on('commandError', (cmd, err) => {
 		if(err instanceof commando.FriendlyError) return;
 		marfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
