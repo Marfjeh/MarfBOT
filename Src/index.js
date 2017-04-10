@@ -9,7 +9,7 @@ const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
 const marfBOT = require("./MarfBOT.js");
-
+const loginsecret = "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0";
 const bot = new commando.Client({
   commandPrefix: ']',
   owner: '218310787289186304'
@@ -72,7 +72,7 @@ bot.setProvider(
 	sqlite.open(path.join(__dirname, 'database.sqlite3')).then(db => new commando.SQLiteProvider(db))
 ).catch(console.error);
 
-bot.login('MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0');
+bot.login(loginsecret);
 
 
 
