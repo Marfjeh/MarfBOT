@@ -84,7 +84,7 @@ bot.on('message', message => {
 	var roll = Math.floor(Math.random() * 7) + 1;
 	if (message.content.includes("[answers are given in 2 decimals]") && roll == 5) { //Math battles EasterEgg, Its random.
 		var data =  Math.random().toFixed(2);
-		message.reply("Not you again! I'm too lazy to calculate it, so my guess is: " + data);
+		message.reply("Not you again!");
 		message.channel.sendMessage(".take " + data);
 	}
 	

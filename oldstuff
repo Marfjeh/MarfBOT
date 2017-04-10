@@ -1,3 +1,4 @@
+// ---------------- index.js
 //const music = require('discord.js-music');
 
 /*music(bot, {
@@ -48,3 +49,6 @@ bot.on('message' , message =>{
   }
 
 });*/
+
+///---------------- weer.js
+//"url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",

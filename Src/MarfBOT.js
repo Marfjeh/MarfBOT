@@ -25,6 +25,16 @@ var clog = function (type, message) {
  console.log("["+type+"| " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
 }
 
+var minmax = function (min, max, num) {
+  if (num >= min && num <= max) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+exports.minmax = minmax;
 exports.direc = direc;
 exports.wlog = wlog;
 exports.nlog = nlog;

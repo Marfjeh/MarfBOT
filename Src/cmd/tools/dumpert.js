@@ -13,12 +13,17 @@ class tweakersCommand extends commando.Command {
     async run(message, args) {
        var parser = require('rss-parser');
        
-        
+        var dumperreeten = [
+        'Goede Techniek, 4 Reeten! :reet::reet::reet::reet:', 
+        'VVS 1 reet! :reet:', 
+        'Dikke billen 5 Reeten! :reet::reet::reet::reet::reet:',
+        'Pranks, 0 reeten.'
+        ];
         var nieuwsberichten_title = "";        
         var nieuwsberichten_text = [];
         var nieuwsberichten_url = [];
 
-        message.reply("Moment, wachten voor de 5 reeten!");
+        message.reply("Moment. Even Joris Terugjorissen :reet:");
         
         parser.parseURL('http://www.dumpert.nl/rss.xml.php', function(err, parsed) {
                 nieuwsberichten_title = parsed.feed.title;
