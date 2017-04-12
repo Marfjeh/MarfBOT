@@ -22,6 +22,7 @@ class weerCommand extends commando.Command {
     
         
         //"url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",
+         setTimeout(function(){
         message.channel.sendMessage({
         "embed": {
                 title: 'Buienradar',
@@ -35,6 +36,7 @@ class weerCommand extends commando.Command {
                 }
             }
         });
+         }, 3000);
     }
 }
 
