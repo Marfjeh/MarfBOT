@@ -24,6 +24,7 @@ class PlayCommand extends commando.Command {
         playmusic(urlist[counter]);
         
         function playmusic(url) {
+            message.reply("`DEBUG: playing " + args + " c:" + counter + " `");
             const streamOptions = { seek: 0, volume: 1 };
             message.member.voiceChannel.join()
             .then(connection => {
