@@ -22,7 +22,7 @@ class PlayCommand extends commando.Command {
                 const stream = ytdl(args, {filter : 'audioonly', videoDefinition: 'high'});
                 const dispatcher = connection.playStream(stream, streamOptions);
                 marfBOT.clog("Music", "Playing: " + args);
-                dispatcher.on('end', () => connection.disconnect());
+                //dispatcher.on('end', () => connection.disconnect());
         })
         .catch(marfBOT.elog);
     }

@@ -9,7 +9,8 @@ var     urlist = [
         "https://www.youtube.com/watch?v=rxokUkJ3h_0",
         "https://www.youtube.com/watch?v=qk_LCRR00cM"
         ],
-        counter =0;
+        counter = 0;
+        
 class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
@@ -24,7 +25,7 @@ class PlayCommand extends commando.Command {
         playmusic(urlist[counter]);
         
         function playmusic(url) {
-            message.reply("`DEBUG: playing " + args + " c:" + counter + " `");
+           marfBOT.dlog("Music Array: playing " + args + " counter: " + counter);
             const streamOptions = { seek: 0, volume: 1 };
             message.member.voiceChannel.join()
             .then(connection => {

@@ -22,7 +22,7 @@ var dlog = function (message) {
 }
 
 var clog = function (type, message) {
- console.log("["+type+"| " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+ console.log("["+type+"|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
 }
 
 var minmax = function (min, max, num) {
