@@ -4,21 +4,23 @@
 *	@author Marvin Ferwerda
 */
 
-const commando = require('discord.js-commando'),
-	  	path = require('path'),
-	  	oneLine = require('common-tags').oneLine,
-    	sqlite = require('sqlite'),
-    	marfBOT = require("./MarfBOT.js"),
+const commando			 = require('discord.js-commando'),
+	  	path			 = require('path'),
+	  	oneLine 		 = require('common-tags').oneLine,
+    	sqlite			 = require('sqlite'),
+    	marfBOT 		 = require("./MarfBOT.js"),
 
       //settings
-      loginsecret = "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
-      marfBotOwner = "218310787289186304",
-      game = "]help for list of commands.",
+      loginsecret		 = 	"MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
+      marfBotOwner		 =	"218310787289186304",
+      AutoRestartifcrash =	true,
+      game				 =	"]help for list of commands.",
+      
       bot = new commando.Client({
 		commandPrefix: ']',
 		owner: marfBotOwner
 	});
-
+var connected = false;
 
 logo();
 
@@ -39,17 +41,31 @@ bot
 	.on('error', ErrorHandler)
 	.on('warn', marfBOT.wlog)
 	.on('debug', marfBOT.dlog)
+	
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
     bot.user.setGame(game);
     marfBOT.nlog("Set playing: " + game);
 	})
-	.on('disconnect', () => { marfBOT.wlog('Disconnected!'); })
-	.on('reconnecting', () => { marfBOT.wlog('Reconnecting...'); })
+	
+	.on('disconnect', () => { 
+		connected = false; 
+		marfBOT.wlog('Disconnected!'); 
+		discconectwatcher();
+		
+	})
+	
+	.on('reconnecting', () => { 
+		connected = true; 
+		marfBOT.wlog('Reconnecting...'); 
+		
+	})
+	
 	.on('commandError', (cmd, err) => {
 		if(err instanceof commando.FriendlyError) return;
 		marfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
 	})
+	
 	.on('commandBlocked', (msg, reason) => {
 		marfBOT.wlog(oneLine`
 			Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ''}
@@ -57,12 +73,14 @@ bot
 			
 		`);
 	})
+	
 	.on('commandPrefixChange', (guild, prefix) => {
 		marfBOT.nlog(oneLine`
 			Prefix ${prefix === '' ? 'removed' : `changed to ${prefix || 'the default'}`}
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})
+	
 	.on('commandStatusChange', (guild, command, enabled) => {
 		marfBOT.nlog(oneLine`
 			Command ${command.groupID}:${command.memberName}
@@ -70,6 +88,7 @@ bot
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})
+	
 	.on('groupStatusChange', (guild, group, enabled) => {
 		marfBOT.nlog(oneLine`
 			Group ${group.id}
@@ -122,11 +141,26 @@ bot.on('message', message => {
 
 //MarfBOT Kernel built-in functions.
 
+function discconectwatcher() {
+	setTimeout(function() { 
+		if (connected == false) {
+			marfBOT.elog("MarfBot has still not reconnected! Force restart!");
+			Restart();	
+		}
+		
+	}, 10000 ); 
+	
+}
+
+function IRCInit(settings) {
+	//planned.	
+}
+
 function ErrorHandler(crash) {
 	console.log("--------------- CRASH/ERROR ---------------");
 	console.error(String(crash));
 	console.log("-------------------- END -------------------")
-	Restart();
+	if(AutoRestartifcrash == true) { Restart(); }
 }
 
 function Restart() {
@@ -146,6 +180,7 @@ function logo() {
 }
 
 function Start() {
+	connected = true;
 	bot.login(loginsecret);
 }
 
