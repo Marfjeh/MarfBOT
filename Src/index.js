@@ -21,6 +21,7 @@ const commando			 = require('discord.js-commando'),
 		owner: marfBotOwner
 	});
 var connected = false;
+var safeshutdown = false;
 
 logo();
 
@@ -97,10 +98,6 @@ bot
 		`);
 });
 
-bot.setProvider(
-	sqlite.open(path.join(__dirname, 'database.sqlite3')).then(db => new commando.SQLiteProvider(db))
-).catch(console.error);
-
 Start();
 
 //Kernel level easereggs huh? :D
@@ -143,7 +140,7 @@ bot.on('message', message => {
 
 function discconectwatcher() {
 	setTimeout(function() { 
-		if (connected == false) {
+		if (connected == false && safeshutdown == false) {
 			marfBOT.elog("MarfBot has still not reconnected! Force restart!");
 			Restart();	
 		}
@@ -164,6 +161,7 @@ function ErrorHandler(crash) {
 }
 
 function Restart() {
+	safeshutdown = true;
 	marfBOT.wlog("Restart() called!");
 	bot.destroy(); 
 	setTimeout(function() { logo(); Start(); marfBOT.nlog("Restart succes!");}, 5000);
@@ -180,11 +178,44 @@ function logo() {
 }
 
 function Start() {
+	
+	bot.setProvider(
+	sqlite.open(path.join(__dirname, 'database.sqlite3')).then(db => new commando.SQLiteProvider(db))
+	).catch(console.error);
+
 	connected = true;
+	safeshutdown = false;
 	bot.login(loginsecret);
 }
 
 function Stop() {
+	safeshutdown = true;
 	marfBOT.wlog("MarfBOT Shutdown!");
 	bot.destroy();
+	setTimeout(function() {process.exit();}, 2000 );
 }
+
+// ------------------ MARFBOT COMMAND SYSTEM -------------------
+const stdin = process.openStdin();
+
+stdin.addListener("data", function(d) {
+	var readline = d.toString().trim();
+	
+	if (readline == "exit" || readline == "stop") {
+		Stop();
+	}
+	if (readline == "irc") {
+		IRCInit();
+	}
+	if (readline == "restart") {
+		Restart();
+	}
+	if (readline == "crash") {
+		ErrorHandler("This is a test crash.\nException: N/A");
+	}
+	if (readline == "watchdog test") {
+		safeshutdown = false;
+		bot.destroy();
+	}
+	
+  });
