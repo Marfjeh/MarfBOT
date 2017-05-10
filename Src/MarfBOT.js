@@ -1,37 +1,33 @@
 const bootstrapper = require("./index.js")
+const today = new Date();
+var time = ('0' + today.getHours()).slice(-2) + ":" + ('0' + today.getMinutes()).slice(-2) + ":" + ('0' + today.getSeconds()).slice(-2);
 
 var direc = function () {
   return __dirname;
 };
 
 var wlog = function(message) {
-  const date = new Date();
-  console.warn("[WARN |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+  console.warn("[WARN |" + time + "] " + message);
 }
 
 var nlog = function(message) {
-  const date = new Date();
-  console.log("[Info |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+  console.log("[Info |" + time + "] " + message);
 }
 
 var elog = function (message) {
-  const date = new Date();
-  console.error("[Error|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+  console.error("[Error|" + time + "] " + message);
 }
 
 var dlog = function (message) {
-  const date = new Date();
-  console.log("[Debug|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+  console.log("[Debug|" + time + "] " + message);
 }
 
 var klog = function(message) {
-  const date = new Date();
-  console.log("[Kernel|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+  console.log("[Kernel|" + time + "] " + message);
 }
 
 var clog = function (type, message) {
-  const date = new Date();
- console.log("["+type+"|" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + message);
+ console.log("["+type+"|" + time + "] " + message);
 }
 
 var minmax = function (min, max, num) {

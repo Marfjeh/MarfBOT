@@ -9,11 +9,13 @@ const commando			 = require('discord.js-commando'),
 	  	oneLine 		 = require('common-tags').oneLine,
     	sqlite			 = require('sqlite'),
     	marfBOT 		 = require("./MarfBOT.js"),
+    	ytdl			 = require('ytdl-core'),
 
       //settings
       loginsecret		 = 	"MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
       marfBotOwner		 =	"218310787289186304",
       AutoRestartifcrash =	true,
+      debug				 =  false,
       game				 =	"]help for list of commands.",
       
       bot = new commando.Client({
@@ -25,8 +27,8 @@ var safeshutdown = false;
 
 logo();
 
-marfBOT.clog('Info ', "MarfBot Kernel Loaded!");
-marfBOT.clog('Info ', "MarfBot Starting...");
+marfBOT.clog('Kernel', "MarfBot Kernel Loaded!");
+marfBOT.clog('Kernel', "MarfBot Starting...");
 
 
 bot.registry.registerGroups([
@@ -116,22 +118,6 @@ bot.on('message', message => {
 	if (message.content.includes("Please make me yours and put it in me!") && roll == 5) { //dickbot EasterEgg.
 		message.channel.sendMessage("DONT. DO. IT.\nWhy would you ever put your dick in @Dickbot ?");
 	}
-
-	
-	// debugger
-	if (message.content.startsWith("[debug: restarter") && message.author == "<@" + marfBotOwner +">") { //MegaXLR Bot EasterEgg.
-		const date = new Date();
-		message.reply("`[MarfBOT Kernel |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + " Aborted all voice streams.`");
-		message.reply("`[MarfBOT Kernel |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + " initialization for restarter started.`");
-		message.reply("`[MarfBOT Kernel |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + " Kernel sleep: 2000ms`");
-		setTimeout(function() { Restart(); }, 2000);
-	}
-	
-		if (message.content.startsWith("[debug: fakecrash") && message.author == "<@" + marfBotOwner +">") { //MegaXLR Bot EasterEgg.
-		const date = new Date();
-		message.reply("`[MarfBOT Kernel |" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "] " + " Fake crash launched look @ console`");
-		ErrorHandler("test");
-	}
 });
 
 
@@ -178,7 +164,6 @@ function logo() {
 }
 
 function Start() {
-	
 	bot.setProvider(
 	sqlite.open(path.join(__dirname, 'database.sqlite3')).then(db => new commando.SQLiteProvider(db))
 	).catch(console.error);
@@ -216,6 +201,12 @@ stdin.addListener("data", function(d) {
 	if (readline == "watchdog test") {
 		safeshutdown = false;
 		bot.destroy();
+	}
+	if (readline == "ping") {
+		marfBOT.nlog("Pong!");
+	}
+	if (readline == "logo") {
+		logo();
 	}
 	
   });

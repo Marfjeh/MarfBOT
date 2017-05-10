@@ -29,7 +29,7 @@ class AboutCommand extends commando.Command {
                 },
                 {
                     name: "Version info",
-                    value: "0.6"
+                    value: "1.0"
                 },
                 {
                     name: "Command list",
