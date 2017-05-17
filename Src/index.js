@@ -4,27 +4,27 @@
 *	@author Marvin Ferwerda
 */
 
-const commando			 = require('discord.js-commando'),
+const   commando		 = require('discord.js-commando'),
 	  	path			 = require('path'),
 	  	oneLine 		 = require('common-tags').oneLine,
     	sqlite			 = require('sqlite'),
     	marfBOT 		 = require("./MarfBOT.js"),
     	ytdl			 = require('ytdl-core'),
+    	process			 = require("process"),
+    	fs				 = require("fs"),
 
       //settings
-      loginsecret		 = 	"MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
-      marfBotOwner		 =	"218310787289186304",
-      AutoRestartifcrash =	true,
-      debug				 =  false,
-      game				 =	"]help for list of commands.",
+    	loginsecret		   = 	"MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
+    	marfBotOwner	   =	"218310787289186304",
+    	AutoRestartifcrash =	true,
+    	debug			   =	false,
+    	game			   =	"]help for list of commands.",
       
-      bot = new commando.Client({
-		commandPrefix: ']',
-		owner: marfBotOwner
-	});
-var connected = false;
-var safeshutdown = false;
+      bot = new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
+	  var connected = false,
+    	  safeshutdown = false;
 
+//init
 logo();
 
 marfBOT.clog('Kernel', "MarfBot Kernel Loaded!");
@@ -103,7 +103,7 @@ bot
 Start();
 
 //Kernel level easereggs huh? :D
-bot.on('message', message => {
+bot.on('message', message => { //legacy Command-system.
 	if (message.content.startsWith("Ik ben MarfBOT niet.")) { //MegaXLR Bot EasterEgg.
 		message.reply("Maar ik wel. :P");
 	}
@@ -136,13 +136,21 @@ function discconectwatcher() {
 }
 
 function IRCInit(settings) {
-	//planned.	
+	marfBOT.elog("coming soon (tm)");
 }
 
 function ErrorHandler(crash) {
 	console.log("--------------- CRASH/ERROR ---------------");
-	console.error(String(crash));
-	console.log("-------------------- END -------------------")
+	console.error(JSON.stringify(crash));
+	console.log("-------------------- END -------------------");
+	
+	fs.writeFile(__dirname + "CRASH-" + marfBOT.getdate + " " + marfBOT.gettime +".txt", JSON.stringify(crash), function(err) {
+    if(err) {
+        return marfBOT.elog("Could not write crashlog!")
+    }
+
+    marfBOT.clog("Kernel", "Writing crashlog file in /crash-logs/t.txt");
+}); 
 	if(AutoRestartifcrash == true) { Restart(); }
 }
 
@@ -203,10 +211,16 @@ stdin.addListener("data", function(d) {
 		bot.destroy();
 	}
 	if (readline == "ping") {
-		marfBOT.nlog("Pong!");
+		marfBOT.nlog("Yes, i'm not frozen, so Pong!");
 	}
 	if (readline == "logo") {
 		logo();
+	}
+	if (readline == "mem") {
+		marfBOT.nlog(JSON.stringify(process.memoryUsage()));
+	}
+	if (readline == "wow") {
+		marfBOT.nlog("Such MarfBOT, Much Console, Wow.");
 	}
 	
   });

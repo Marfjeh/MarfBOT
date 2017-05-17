@@ -23,7 +23,7 @@ class reetenCommand extends commando.Command {
         }
         else
         {
-            message.channel.sendMessage("0 reeten!");
+            message.channel.sendMessage("Maximaal 0.5 t/m 5!");
         }
             
     }
