@@ -6,7 +6,7 @@ class p2000Command extends commando.Command {
             name: 'p2000',
             group: 'tools',
             memberName: 'p2000',
-            description: 'Laaste 20 meldingen van de landelijk P2000 Systeem.'
+            description: 'Laaste 20 meldingen van de landelijk P2000 Systeem. (dutch)'
         });
     }
 
