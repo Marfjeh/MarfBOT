@@ -7,7 +7,7 @@ class reetenCommand extends commando.Command {
             name: 'reeten',
             group: 'random',
             memberName: 'reeten',
-            description: 'Dumpertreeten in Discord! gebruik: !reeten [0-5]'
+            description: 'Dumpertreeten in Discord! gebruik: !reeten [0-5] (dutch)'
         });
     }
 

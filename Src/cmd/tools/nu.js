@@ -6,7 +6,7 @@ class nuCommand extends commando.Command {
             name: 'nu',
             group: 'tools',
             memberName: 'nu',
-            description: 'Laaste 10 nieuws artiekelen van nu - algemeen'
+            description: 'Laaste 10 nieuws artiekelen van nu - algemeen (dutch)'
         });
     }
 

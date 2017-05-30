@@ -6,7 +6,7 @@ class tweakersCommand extends commando.Command {
             name: 'tweakers',
             group: 'tools',
             memberName: 'tweakers',
-            description: 'Laaste 10 nieuws artiekelen van Tweakers.'
+            description: 'Laaste 10 nieuws artiekelen van Tweakers. (dutch)'
         });
     }
 
