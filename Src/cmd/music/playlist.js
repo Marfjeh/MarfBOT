@@ -9,12 +9,12 @@ var     urlist = [
         "https://www.youtube.com/watch?v=rxokUkJ3h_0",
         "https://www.youtube.com/watch?v=qk_LCRR00cM"
         ],
-        counter = 0;
-        
-class PlayCommand extends commando.Command {
+
+    class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'playlist',
+        counter = 0;
             group: 'music',
             memberName: 'playlist',
             description: 'play a saved playlist on the localsystem. Still in alpha.'

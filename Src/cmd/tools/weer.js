@@ -16,9 +16,9 @@ class weerCommand extends commando.Command {
         var n = date.toDateString();
         var time = date.toLocaleTimeString();
         
-        var exec = require('child_process').exec;
-        exec('rm /var/www/html/MarfBOT/weer.gif');
-        exec('wget -O /var/www/html/MarfBOT/weer.gif http://api.buienradar.nl/image/1.0/RadarMapNL');
+        //var exec = require('child_process').exec;
+        //exec('rm /var/www/html/MarfBOT/weer.gif');
+        //exec('wget -O /var/www/html/MarfBOT/weer.gif http://api.buienradar.nl/image/1.0/RadarMapNL');
     
         
         //"url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",
@@ -28,7 +28,7 @@ class weerCommand extends commando.Command {
                 title: 'Buienradar',
                 url: 'http://www.buienradar.nl/',
                 "image": {
-                "url": "http://fileserver.marfprojects.nl/MarfBOT/weer.gif?random=" + Math.random(),
+                    "url": "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&t=" + Math.random() + ".gif",
                 },
                 footer: {
                     text: n + " " + time,

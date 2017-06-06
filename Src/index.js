@@ -48,25 +48,25 @@ bot
 		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
     bot.user.setGame(game);
     marfBOT.nlog("Set playing: " + game);
-	})
+	});
 	
 	.on('disconnect', () => { 
 		connected = false; 
 		marfBOT.wlog('Disconnected!'); 
 		discconectwatcher();
 		
-	})
+	});
 	
 	.on('reconnecting', () => { 
 		connected = true; 
 		marfBOT.wlog('Reconnecting...'); 
 		
-	})
+	});
 	
 	.on('commandError', (cmd, err) => {
 		if(err instanceof commando.FriendlyError) return;
 		marfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
-	})
+	});
 	
 	.on('commandBlocked', (msg, reason) => {
 		marfBOT.wlog(oneLine`
@@ -74,7 +74,7 @@ bot
 			blocked; ${reason}
 			
 		`);
-	})
+	});
 	
 	.on('commandPrefixChange', (guild, prefix) => {
 		marfBOT.nlog(oneLine`
@@ -109,9 +109,9 @@ bot.on('message', message => { //legacy Command-system.
 
 	var roll = Math.floor(Math.random() * 7) + 1;
 	if (message.content.includes("[answers are given in 2 decimals]") && roll == 5) { //Math battles EasterEgg, Its random.
-		var data =  Math.random().toFixed(2);
+		var random_ans =  Math.random().toFixed(2);
 		message.reply("Not you again!");
-		message.channel.sendMessage(".take " + data);
+		message.channel.sendMessage(".take " + random_ans);
 	}
 
 	if (message.content.includes("Please make me yours and put it in me!") && roll == 5) { //dickbot EasterEgg.
@@ -150,7 +150,7 @@ function ErrorHandler(crash) {
 
     marfBOT.clog("Kernel", "Writing crashlog file in /crash-logs/t.txt");
 }); 
-	if(crash_watchdog == true) { Restart(); }
+	if(crash_watchdog === true) { Restart(); }
 }
 
 function Restart() {
@@ -193,32 +193,32 @@ const stdin = process.openStdin();
 stdin.addListener("data", function(d) {
 	var readline = d.toString().trim();
 	
-	if (readline == "exit" || readline == "stop") {
+	if (readline === "exit" || readline === "stop") {
 		Stop();
 	}
-	if (readline == "irc") {
+	if (readline === "irc") {
 		IRCInit();
 	}
-	if (readline == "restart") {
+	if (readline === "restart") {
 		Restart();
 	}
-	if (readline == "crash") {
+	if (readline === "crash") {
 		ErrorHandler("This is a test crash.\nException: N/A");
 	}
-	if (readline == "watchdog test") {
+	if (readline === "watchdog test") {
 		safeshutdown = false;
 		bot.destroy();
 	}
-	if (readline == "ping") {
+	if (readline === "ping") {
 		marfBOT.nlog("Yes, i'm not frozen, so Pong!");
 	}
-	if (readline == "logo") {
+	if (readline === "logo") {
 		logo();
 	}
-	if (readline == "mem") {
+	if (readline === "mem") {
 		marfBOT.nlog(JSON.stringify(process.memoryUsage()));
 	}
-	if (readline == "wow") {
+	if (readline === "wow") {
 		marfBOT.nlog("Such MarfBOT, Much Console, Wow.");
 	}
 	
