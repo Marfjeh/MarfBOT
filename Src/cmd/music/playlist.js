@@ -3,18 +3,17 @@ const   commando = require('discord.js-commando'),
         discord = require("discord.js"),
         ytdl = require('ytdl-core'),
         client = new discord.Client();
-        
+
 var     urlist = [
         "https://www.youtube.com/watch?v=2boJLX0iVp8",
         "https://www.youtube.com/watch?v=rxokUkJ3h_0",
         "https://www.youtube.com/watch?v=qk_LCRR00cM"
-        ],
+      ];
 
     class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'playlist',
-        counter = 0;
             group: 'music',
             memberName: 'playlist',
             description: 'play a saved playlist on the localsystem. Still in alpha.'
@@ -23,7 +22,7 @@ var     urlist = [
 
     async run(message, args) {
         playmusic(urlist[counter]);
-        
+
         function playmusic(url) {
            marfBOT.dlog("Music Array: playing " + args + " counter: " + counter);
             const streamOptions = { seek: 0, volume: 1 };

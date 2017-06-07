@@ -18,7 +18,7 @@ const   commando		 = require('discord.js-commando'),
     	crash_watchdog	 = true,
     	debug			 = false,
     	game			 = "DEVELOPMENT MODE",
-      
+
       bot = new commando.Client({ commandPrefix: '[', owner: marfBotOwner });
 	  var connected = false,
     	  safeshutdown = false;
@@ -43,46 +43,46 @@ bot
 	.on('error', ErrorHandler)
 	.on('warn', marfBOT.wlog)
 	.on('debug', marfBOT.dlog)
-	
+
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
     bot.user.setGame(game);
     marfBOT.nlog("Set playing: " + game);
-	});
-	
-	.on('disconnect', () => { 
-		connected = false; 
-		marfBOT.wlog('Disconnected!'); 
+	})
+
+	.on('disconnect', () => {
+		connected = false;
+		marfBOT.wlog('Disconnected!');
 		discconectwatcher();
-		
-	});
-	
-	.on('reconnecting', () => { 
-		connected = true; 
-		marfBOT.wlog('Reconnecting...'); 
-		
-	});
-	
+
+	})
+
+	.on('reconnecting', () => {
+		connected = true;
+		marfBOT.wlog('Reconnecting...');
+
+	})
+
 	.on('commandError', (cmd, err) => {
 		if(err instanceof commando.FriendlyError) return;
 		marfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
-	});
-	
+	})
+
 	.on('commandBlocked', (msg, reason) => {
 		marfBOT.wlog(oneLine`
 			Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ''}
 			blocked; ${reason}
-			
+
 		`);
-	});
-	
+	})
+
 	.on('commandPrefixChange', (guild, prefix) => {
 		marfBOT.nlog(oneLine`
 			Prefix ${prefix === '' ? 'removed' : `changed to ${prefix || 'the default'}`}
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})
-	
+
 	.on('commandStatusChange', (guild, command, enabled) => {
 		marfBOT.nlog(oneLine`
 			Command ${command.groupID}:${command.memberName}
@@ -90,7 +90,7 @@ bot
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
 	})
-	
+
 	.on('groupStatusChange', (guild, group, enabled) => {
 		marfBOT.nlog(oneLine`
 			Group ${group.id}
@@ -124,14 +124,14 @@ bot.on('message', message => { //legacy Command-system.
 //MarfBOT Kernel built-in functions.
 
 function discconectwatcher() {
-	setTimeout(function() { 
+	setTimeout(function() {
 		if (connected == false && safeshutdown == false) {
 			marfBOT.elog("MarfBot has still not reconnected! Force restart!");
-			Restart();	
+			Restart();
 		}
-		
-	}, 10000 ); 
-	
+
+	}, 10000 );
+
 }
 
 function IRCInit(settings) {
@@ -142,21 +142,21 @@ function ErrorHandler(crash) {
 	console.log("--------------- CRASH/ERROR ---------------");
 	console.error(JSON.stringify(crash));
 	console.log("-------------------- END -------------------");
-	
+
 	fs.writeFile(__dirname + "CRASH-" + marfBOT.getdate + " " + marfBOT.gettime +".txt", JSON.stringify(crash), function(err) {
     if(err) {
         return marfBOT.elog("Could not write crashlog!")
     }
 
     marfBOT.clog("Kernel", "Writing crashlog file in /crash-logs/t.txt");
-}); 
+});
 	if(crash_watchdog === true) { Restart(); }
 }
 
 function Restart() {
 	safeshutdown = true;
 	marfBOT.wlog("Restart() called!");
-	bot.destroy(); 
+	bot.destroy();
 	setTimeout(function() { logo(); Start(); marfBOT.nlog("Restart succes!");}, 5000);
 }
 
@@ -192,7 +192,7 @@ const stdin = process.openStdin();
 
 stdin.addListener("data", function(d) {
 	var readline = d.toString().trim();
-	
+
 	if (readline === "exit" || readline === "stop") {
 		Stop();
 	}
@@ -221,5 +221,5 @@ stdin.addListener("data", function(d) {
 	if (readline === "wow") {
 		marfBOT.nlog("Such MarfBOT, Much Console, Wow.");
 	}
-	
+
   });
