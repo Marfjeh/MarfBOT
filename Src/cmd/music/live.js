@@ -15,6 +15,7 @@ class LiveCommand extends commando.Command {
     }
 
     async run(message, args) {
+        if (args.srartsWith(""))
         const streamOptions = { seek: 0, volume: 1 };
         message.member.voiceChannel.join().then(connection => {
           connection.playStream(args);
