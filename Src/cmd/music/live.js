@@ -15,7 +15,11 @@ class LiveCommand extends commando.Command {
     }
 
     async run(message, args) {
-        if (args.srartsWith(""))
+        if (args.srartsWith("https://www.youtu")) {
+            message.reply("Sorry, Youtube live streams are not supported yet on this MarfBot Version. :(")
+        }
+        else
+        {
         const streamOptions = { seek: 0, volume: 1 };
         message.member.voiceChannel.join().then(connection => {
           connection.playStream(args);
