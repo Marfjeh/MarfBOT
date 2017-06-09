@@ -15,15 +15,10 @@ class LiveCommand extends commando.Command {
     }
 
     async run(message, args) {
-        //const channel = message.member.voiceChannel;
         const streamOptions = { seek: 0, volume: 1 };
-        message.member.voiceChannel.join()
-        .then(connection => {
-          var request = require("request");
-          var stream = request("http://mp3.stream.tb-group.fm:80/ht.mp3");
-          connection.playRawStream(stream).catch(error); //error is a function who show errors on the console
-        })
-        .catch(marfBOT.elog);
+        message.member.voiceChannel.join().then(connection => {
+          connection.playStream(args);
+        }).catch(marfBOT.elog);
 
     }
 }
