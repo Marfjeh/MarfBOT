@@ -13,13 +13,13 @@ const   commando		 = require('discord.js-commando'),
     	process			 = require("process"),
     	fs				 = require("fs"),
       //               settings
-    	loginsecret		 = "MzE2ODUxNDkyODk0MDE1NDg5.DAbU-Q.a_cuEQQbZEw9-k2KjG2BASGTejg",
+    	loginsecret		 = "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
     	marfBotOwner	 = "218310787289186304",
     	crash_watchdog	 = true,
     	debug			 = false,
-    	game			 = "DEVELOPMENT MODE",
+    	game			 = "]help for list of commands.",
 
-      bot = new commando.Client({ commandPrefix: '[', owner: marfBotOwner });
+      bot = new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
 	  var connected = false,
     	  safeshutdown = false;
 
