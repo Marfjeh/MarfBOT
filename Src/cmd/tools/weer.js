@@ -15,20 +15,17 @@ class weerCommand extends commando.Command {
         var date = new Date();
         var n = date.toDateString();
         var time = date.toLocaleTimeString();
-        
-        //var exec = require('child_process').exec;
-        //exec('rm /var/www/html/MarfBOT/weer.gif');
-        //exec('wget -O /var/www/html/MarfBOT/weer.gif http://api.buienradar.nl/image/1.0/RadarMapNL');
-    
-        
-        //"url": "http://api.buienradar.nl/image/1.0/RadarMapNL?" + Math.random() + ".gif",
-         setTimeout(function(){
+		var mapurl = "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&t=";
+        if (args.toLowerCase() === "europe" || args.toLowerCase() === "eur") {
+			mapurl = "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif$t=";
+		}	
+
         message.channel.sendMessage({
         "embed": {
                 title: 'Buienradar',
                 url: 'http://www.buienradar.nl/',
                 "image": {
-                    "url": "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&t=" + Math.random() + ".gif",
+                    "url": mapurl + Math.random() + ".gif",
                 },
                 footer: {
                     text: n + " " + time,
@@ -36,7 +33,6 @@ class weerCommand extends commando.Command {
                 }
             }
         });
-         }, 3000);
     }
 }
 
