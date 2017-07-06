@@ -6,21 +6,18 @@ class BugReportCommand extends commando.Command {
             name: 'purge',
             group: 'tools',
             memberName: 'purge',
-            description: 'purge amound of messages.'
+            description: 'purge amound of messages. (Needs to be manualy enabled)'
         });
     }
 
     async run(message, args) {
-        message.channel.sendMessage("Error dumped in console.");
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
+	if (message.member.hasPermission('MANAGE_MESSAGES') === true) {
+		let messagecount = parseInt(args);
+       		message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+	}
+	else {
+		message.reply("WARNING, You don't have the permission (`MANAGE_MESSAGES`) to manage messages, so you can't run this command.");
+	}
     }
 }
 

@@ -13,7 +13,7 @@ class pslistCommand extends commando.Command {
     }
 
     async run(message, args) {
-        var path = "/home/marf/Cloud9/MarfBOT/Src/sounds";
+        var path = "/home/marfbot/MarfBOT/Src/sounds";
         var list = "";
         fs.readdir(path, function(err, items) {
         if (err == null)

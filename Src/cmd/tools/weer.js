@@ -11,21 +11,25 @@ class weerCommand extends commando.Command {
     }
 
     async run(message, args) {
-        message.reply("Hang on, Getting tha file!");
+       // message.reply("Hang on, Getting tha file!");
         var date = new Date();
         var n = date.toDateString();
         var time = date.toLocaleTimeString();
-		var mapurl = "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&t=";
+	var titlee = "Buienradar";
+	var urla = "http://www.buienradar.nl/";
+	var mapurl = "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&random=" + Math.random() + ".gif";
         if (args.toLowerCase() === "europe" || args.toLowerCase() === "eur") {
-			mapurl = "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif$t=";
+			mapurl =  "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif&random=" + Math.random() + ".gif";
+			urla = "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs";
+			titlee = "Buienradar - Europe"
 		}	
 
         message.channel.sendMessage({
         "embed": {
-                title: 'Buienradar',
-                url: 'http://www.buienradar.nl/',
+                title: titlee,
+                url: urla,
                 "image": {
-                    "url": mapurl + Math.random() + ".gif",
+                    "url": mapurl,
                 },
                 footer: {
                     text: n + " " + time,
