@@ -6,7 +6,7 @@ class amberCommand extends commando.Command {
             name: 'amber',
             group: 'tools',
             memberName: 'amber',
-            description: 'Get the latest Amber alert in the netherlands if there one is'
+            description: 'Get the latest Amber alert for The Netherlands if there is one.'
         });
     }
 
