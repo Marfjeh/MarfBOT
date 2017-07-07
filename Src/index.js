@@ -4,21 +4,21 @@
 *	@author Marvin Ferwerda
 */
 
-const commando			= require('discord.js-commando'),
-	  	path					= require('path'),
+const commando				= require('discord.js-commando'),
+	  	path				= require('path'),
 	  	oneLine				= require('common-tags').oneLine,
     	sqlite				= require('sqlite'),
     	marfBOT				= require("./MarfBOT.js"),
     	process				= require("process"),
-    	fs						= require("fs"),
+    	fs					= require("fs"),
 
       //               settings
     	loginsecret			= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
     	marfBotOwner		= "218310787289186304",
-    	crash_watchdog	= true,
-    	debug						= false,
-    	game						= "]help for list of commands.",
-      bot 						= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
+    	crash_watchdog		= true,
+    	debug				= false,
+    	game				= "]help for list of commands.",
+      	bot					= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
 var 	connected 			= false,
     	safeshutdown		= false;
 
