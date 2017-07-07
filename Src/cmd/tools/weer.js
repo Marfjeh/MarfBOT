@@ -22,7 +22,12 @@ class weerCommand extends commando.Command {
 			mapurl =  "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif&random=" + Math.random() + ".gif";
 			urla = "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs";
 			titlee = "Buienradar - Europe"
-		}	
+		}
+		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv") {
+			mapurl =  "url": "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
+			urla = "http://lietus.lv/";
+			titlee = "SRI - rain/snow radar";
+		}
 
         message.channel.sendMessage({
         "embed": {
