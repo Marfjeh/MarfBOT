@@ -4,24 +4,23 @@
 *	@author Marvin Ferwerda
 */
 
-const   commando		 = require('discord.js-commando'),
-	  	path			 = require('path'),
-	  	oneLine 		 = require('common-tags').oneLine,
-    	sqlite			 = require('sqlite'),
-    	marfBOT 		 = require("./MarfBOT.js"),
-    	ytdl			 = require('ytdl-core'),
-    	process			 = require("process"),
-    	fs				 = require("fs"),
-      //               settings
-    	loginsecret		 = "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
-    	marfBotOwner	 = "218310787289186304",
-    	crash_watchdog	 = true,
-    	debug			 = false,
-    	game			 = "]help for list of commands.",
+const commando				= require('discord.js-commando'),
+	  	path				= require('path'),
+	  	oneLine				= require('common-tags').oneLine,
+    	sqlite				= require('sqlite'),
+    	marfBOT				= require("./MarfBOT.js"),
+    	process				= require("process"),
+    	fs					= require("fs"),
 
-      bot = new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
-	  var connected = false,
-    	  safeshutdown = false;
+      //               settings
+    	loginsecret			= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
+    	marfBotOwner		= "218310787289186304",
+    	crash_watchdog		= true,
+    	debug				= false,
+    	game				= "]help for list of commands.",
+      	bot					= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
+var 	connected 			= false,
+    	safeshutdown		= false;
 
 //init
 logo();
@@ -45,7 +44,7 @@ bot
 	.on('debug', marfBOT.dlog)
 
 	.on('ready', () => {
-		marfBOT.nlog(`MarfBot is running, and online! loggen in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
+		marfBOT.nlog(`MarfBot is running, and online! logged in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
     bot.user.setGame(game);
     marfBOT.nlog("Set playing: " + game);
 	})
@@ -101,20 +100,21 @@ bot
 
 Start();
 
-//Kernel level easereggs huh? :D
-bot.on('message', message => { //legacy Command-system.
+bot.on('message', message => { //legacy Command-system. this does not use the discord.js-commando system, because the framework has sadly limitations.
+
+	//Easter eggs.
 	if (message.content.startsWith("Ik ben MarfBOT niet.")) { //MegaXLR Bot EasterEgg.
 		message.reply("Maar ik wel. :P");
 	}
 
-	var roll = Math.floor(Math.random() * 7) + 1;
-	if (message.content.includes("[answers are given in 2 decimals]") && roll == 5) { //Math battles EasterEgg, Its random.
+	var roll = Math.floor(Math.random() * 5) + 1;
+	if (message.content.includes("[answers are given in 2 decimals]") && roll == 4) { //Math battles EasterEgg, It's random.
 		var random_ans =  Math.random().toFixed(2);
 		message.reply("Not you again!");
 		message.channel.sendMessage(".take " + random_ans);
 	}
 
-	if (message.content.includes("Please make me yours and put it in me!") && roll == 5) { //dickbot EasterEgg.
+	if (message.content.includes("Please make me yours and put it in me!")) { //dickbot EasterEgg.
 		message.channel.sendMessage("DONT. DO. IT.\nWhy would you ever put your dick in @Dickbot ?");
 	}
 });
@@ -134,7 +134,7 @@ function discconectwatcher() {
 
 }
 
-function IRCInit(settings) {
+function IRCInit(settings) { //this will init a IRC bridge from a discord channel to a IRC server.
 	marfBOT.elog("coming soon (tm)");
 }
 
@@ -143,7 +143,7 @@ function ErrorHandler(crash) {
 	console.error(JSON.stringify(crash));
 	console.log("-------------------- END -------------------");
 
-	fs.writeFile(__dirname + "CRASH-" + marfBOT.getdate + " " + marfBOT.gettime +".txt", JSON.stringify(crash), function(err) {
+	fs.writeFile(__dirname + "/CRASH-" + marfBOT.getdate + " " + marfBOT.gettime +".txt", JSON.stringify(crash), function(err) {
     if(err) {
         return marfBOT.elog("Could not write crashlog!")
     }
@@ -192,6 +192,8 @@ const stdin = process.openStdin();
 
 stdin.addListener("data", function(d) {
 	var readline = d.toString().trim();
+
+	//TODO: change this to a switch rather then a if if if if fest.
 
 	if (readline === "exit" || readline === "stop") {
 		Stop();
