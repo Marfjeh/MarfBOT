@@ -1,5 +1,5 @@
 const   commando = require('discord.js-commando'),
-        discord = require("discord.js"),
+        discord = require("discord.js");
 
 class JoinCommand extends commando.Command {
     constructor(client) {

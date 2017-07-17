@@ -107,15 +107,15 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 		message.reply("Maar ik wel. :P");
 	}
 
-	var roll = Math.floor(Math.random() * 5) + 1;
-	if (message.content.includes("[answers are given in 2 decimals]") && roll == 4) { //Math battles EasterEgg, It's random.
+	var roll = Math.floor(Math.random() * 4) + 1;
+	if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
 		var random_ans =  Math.random().toFixed(2);
-		message.reply("Not you again!");
+		message.reply("Really, you agian?! My parser sucks so i'll just take a random guess...");
 		message.channel.sendMessage(".take " + random_ans);
 	}
 
-	if (message.content.includes("Please make me yours and put it in me!")) { //dickbot EasterEgg.
-		message.channel.sendMessage("DONT. DO. IT.\nWhy would you ever put your dick in @Dickbot ?");
+	if (message.content.includes("8===>")) { //dickbot EasterEgg.
+		message.channel.sendMessage("No, @dickbot is dead :(");
 	}
 });
 
