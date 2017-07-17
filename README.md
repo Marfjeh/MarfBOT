@@ -24,3 +24,15 @@ It uses some External libs
 * Discord.js-commando
 * ytdl-core
 * rss-parser
+
+### How to install & run
+
+Make sure you've installed node 8 or higher.
+
+```BASH
+sudo apt install build-essential ffmpeg
+git clone the repo
+Put a login token inside the kernel (index.js)
+npm install
+node .
+```

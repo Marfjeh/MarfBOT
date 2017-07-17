@@ -24,7 +24,7 @@ class weerCommand extends commando.Command {
 			titlee = "Buienradar - Europe"
 		}
 		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv") {
-			mapurl =  "url": "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
+			mapurl =  "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
 			urla = "http://lietus.lv/";
 			titlee = "SRI - rain/snow radar";
 		}
