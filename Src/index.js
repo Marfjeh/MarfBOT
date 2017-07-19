@@ -5,22 +5,22 @@
 */
 
 const commando				= require('discord.js-commando'),
-	  	path				= require('path'),
-	  	oneLine				= require('common-tags').oneLine,
+  	path				= require('path'),
+  	oneLine				= require('common-tags').oneLine,
     	sqlite				= require('sqlite'),
     	marfBOT				= require("./MarfBOT.js"),
     	process				= require("process"),
-    	fs					= require("fs"),
+    	fs				= require("fs"),
 
       //               settings
     	loginsecret			= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
-    	marfBotOwner		= "218310787289186304",
-    	crash_watchdog		= true,
+    	marfBotOwner			= "218310787289186304",
+    	crash_watchdog			= true,
     	debug				= false,
     	game				= "]help for list of commands.",
-      	bot					= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
+      	bot				= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
 var 	connected 			= false,
-    	safeshutdown		= false;
+    	safeshutdown			= false;
 
 //init
 logo();
@@ -45,21 +45,19 @@ bot
 
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! logged in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-    bot.user.setGame(game);
-    marfBOT.nlog("Set playing: " + game);
+	    	bot.user.setGame(game);
+    		marfBOT.nlog("Set playing: " + game);
 	})
 
 	.on('disconnect', () => {
 		connected = false;
 		marfBOT.wlog('Disconnected!');
 		discconectwatcher();
-
 	})
 
 	.on('reconnecting', () => {
 		connected = true;
 		marfBOT.wlog('Reconnecting...');
-
 	})
 
 	.on('commandError', (cmd, err) => {
@@ -134,8 +132,12 @@ function discconectwatcher() {
 
 }
 
-function IRCInit(settings) { //this will init a IRC bridge from a discord channel to a IRC server.
-	marfBOT.elog("coming soon (tm)");
+function IRCInit() { //this will init a IRC bridge from a discord channel to a IRC server.
+	marfBOT.clog("IRC", "IRC mode starting! Notice: this is still in beta.");
+	marfBOT.clog("IRC", "Loading libs...");
+	const discordIRC = require("discrod-irc"),
+		  IrcConfig = require("./irc_config.json");
+	discordIRC(IrcConfig);
 }
 
 function ErrorHandler(crash) {
