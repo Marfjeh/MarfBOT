@@ -28,6 +28,11 @@ class weerCommand extends commando.Command {
 			urla = "http://lietus.lv/";
 			titlee = "SRI - rain/snow radar";
 		}
+		if (args.toLowerCase() === "cloud" || args.toLowerCase() === "wolken") {
+			mapurl =  "https://api.buienradar.nl/image/1.0/cloudmapnl/?ext=gif&random=" + Math.random() + ".gif";
+			urla = "https://www.buienradar.nl/nederland/zon-en-wolken/wolkenradar";
+			titlee = "Buienradar - CloudRadar"
+		}
 
         message.channel.sendMessage({
         "embed": {
