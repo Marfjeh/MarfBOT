@@ -24,9 +24,14 @@ class weerCommand extends commando.Command {
 			titlee = "Buienradar - Europe"
 		}
 		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv") {
-			mapurl =  "url": "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
+			mapurl =  "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
 			urla = "http://lietus.lv/";
 			titlee = "SRI - rain/snow radar";
+		}
+		if (args.toLowerCase() === "cloud" || args.toLowerCase() === "wolken") {
+			mapurl =  "https://api.buienradar.nl/image/1.0/cloudmapnl/?ext=gif&random=" + Math.random() + ".gif";
+			urla = "https://www.buienradar.nl/nederland/zon-en-wolken/wolkenradar";
+			titlee = "Buienradar - CloudRadar"
 		}
 
         message.channel.sendMessage({

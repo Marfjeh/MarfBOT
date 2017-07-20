@@ -1,3 +1,4 @@
+//deprecated
 const   commando = require('discord.js-commando'),
         marfBOT = require("../../MarfBOT.js"),
         discord = require("discord.js"),
