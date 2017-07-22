@@ -6,33 +6,37 @@ class weerCommand extends commando.Command {
             name: 'weer',
             group: 'tools',
             memberName: 'weer',
-            description: 'Get a buienradar image of the current weather'
+            description: 'Get a buienradar image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer.'
         });
     }
 
     async run(message, args) {
-       // message.reply("Hang on, Getting tha file!");
-        var date = new Date();
-        var n = date.toDateString();
-        var time = date.toLocaleTimeString();
-	var titlee = "Buienradar";
-	var urla = "http://www.buienradar.nl/";
-	var mapurl = "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&random=" + Math.random() + ".gif";
+        var date   = new Date();
+        var n      = date.toDateString();
+        var time   = date.toLocaleTimeString();
+	    var titlee = "Buienradar";
+	    var urla   = "http://www.buienradar.nl/";
+	    var mapurl = "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024&random=" + Math.random() + ".gif";
         if (args.toLowerCase() === "europe" || args.toLowerCase() === "eur") {
-			mapurl =  "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif&random=" + Math.random() + ".gif";
-			urla = "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs";
-			titlee = "Buienradar - Europe"
+			mapurl   = "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif&random=" + Math.random() + ".gif";
+			urla     = "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs";
+			titlee   = "Buienradar - Europe"
 		}
 		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv") {
-			mapurl =  "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
-			urla = "http://lietus.lv/";
-			titlee = "SRI - rain/snow radar";
+			mapurl   = "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
+			urla     = "http://lietus.lv/";
+			titlee   = "SRI - rain/snow radar";
 		}
 		if (args.toLowerCase() === "cloud" || args.toLowerCase() === "wolken") {
-			mapurl =  "https://api.buienradar.nl/image/1.0/cloudmapnl/?ext=gif&random=" + Math.random() + ".gif";
-			urla = "https://www.buienradar.nl/nederland/zon-en-wolken/wolkenradar";
-			titlee = "Buienradar - CloudRadar"
+			mapurl   = "https://api.buienradar.nl/image/1.0/cloudmapnl/?ext=gif&random=" + Math.random() + ".gif";
+			urla     = "https://www.buienradar.nl/nederland/zon-en-wolken/wolkenradar";
+			titlee   = "Buienradar - CloudRadar";
 		}
+        if (args.toLowerCase() === "thunder" || args.toLowerCase() === "onweer") {
+            mapurl  = "https://api.buienradar.nl/image/1.0/lightningnl/?ext=gif&random=" + Math.random() + ".gif";
+            urla    = "https://www.buienradar.nl/nederland/neerslag/onweerradar";
+            titlee  = "Buienradar - Onweer/Thunder";
+        }
 
         message.channel.sendMessage({
         "embed": {
