@@ -225,5 +225,13 @@ stdin.addListener("data", function(d) {
 	if (readline === "wow") {
 		marfBOT.nlog("Such MarfBOT, Much Console, Wow.");
 	}
+	if (readline === "gc" && global.gc) {
+		marfBOT.clog("GC", "Forced garbage collection completed.")
+		global.gc();
+	}
+	else
+	{
+		marfBOT.clog("GC", "Garbage collection unavailable.  Pass --expose-gc when launching marfbot to enable forced garbage collection.");
+	}
 
   });

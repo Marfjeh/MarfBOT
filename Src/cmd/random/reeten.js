@@ -13,7 +13,7 @@ class reetenCommand extends commando.Command {
 
     async run(message, args) {
         if (marfBOT.minmax(1, 5, parseInt(args)) == true) {
-       message.channel.sendMessage({
+       message.channel.send({
         "embed": {
                 "image": {
                 "url": "http://fileserver.marfprojects.nl/MarfBOT/reet" + args + ".png",

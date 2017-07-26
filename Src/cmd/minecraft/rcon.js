@@ -19,7 +19,7 @@ class RconCommand extends commando.Command {
         rcon.connect().then(() => {
           return rcon.send(args);
         }).then(res => {
-          message.channel.sendMessage("[Command] ```/" + args + "``` [Rcon Server Response] ```" + res + "```");
+          message.channel.send("[Command] ```/" + args + "``` [Rcon Server Response] ```" + res + "```");
         }).then(() => {
           return rcon.disconnect();
         });

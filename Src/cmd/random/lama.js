@@ -11,7 +11,7 @@ class BotnetCommand extends commando.Command {
     }
 
     async run(message, args) {
-      message.channel.sendMessage(
+      message.channel.send(
  "```                                 .S8%   \n"+
 "  .  . .  .  . .  .  . .  .  . .S @ ;  .\n"+
 "   .       .       .       . SX:S..888:\n"+ 

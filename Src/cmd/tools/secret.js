@@ -13,20 +13,9 @@ class BugReportCommand extends commando.Command {
 
     async run(message, args) {
         message.delete(10000);
-        marfBOT.nlog("removed a message: " + args);
+        marfBOT.nlog("removed a message: <" + message.author + "> " + args);
         
     }
 }
 
 module.exports = BugReportCommand;
-
-/*
-
-                case "purge":
-                    int amount = Integer.parseInt(ms[1]) + 1;
-                    if (amount > 1 && amount < 101)
-                        event.getChannel().getHistory().retrievePast(amount)
-                                .queue(q -> event.getTextChannel().deleteMessages(q).queue());
-                    else event.getChannel().sendMessage("Invalid argument!").queue();
-                    break;
-                    */
