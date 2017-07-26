@@ -229,8 +229,7 @@ stdin.addListener("data", function(d) {
 		marfBOT.clog("GC", "Forced garbage collection completed.")
 		global.gc();
 	}
-	else
-	{
+	else {
 		marfBOT.clog("GC", "Garbage collection unavailable.  Pass --expose-gc when launching marfbot to enable forced garbage collection.");
 	}
 
