@@ -4,23 +4,22 @@
 *	@author Marvin Ferwerda
 */
 
-const commando				= require('discord.js-commando'),
-  	path				= require('path'),
-  	oneLine				= require('common-tags').oneLine,
-    	sqlite				= require('sqlite'),
-    	marfBOT				= require("./MarfBOT.js"),
-    	process				= require("process"),
+const commando			= require('discord.js-commando'),
+  		path			= require('path'),
+  		oneLine			= require('common-tags').oneLine,
+    	sqlite			= require('sqlite'),
+    	marfBOT			= require("./MarfBOT.js"),
+    	process			= require("process"),
     	fs				= require("fs"),
-
       //               settings
-    	loginsecret			= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
-    	marfBotOwner			= "218310787289186304",
-    	crash_watchdog			= true,
-    	debug				= false,
-    	game				= "]help for list of commands.",
+    	loginsecret		= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",
+    	marfBotOwner	= "218310787289186304",
+    	crash_watchdog	= true,
+    	debug			= false,
+    	game			= "]help for list of commands.",
       	bot				= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
-var 	connected 			= false,
-    	safeshutdown			= false;
+var 	connected		= false,
+    	safeshutdown	= false;
 
 //init
 logo();
@@ -102,7 +101,7 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 
 	//Easter eggs.
 	if (message.content.startsWith("Ik ben MarfBOT niet.")) { //MegaXLR Bot EasterEgg.
-		message.reply("Maar ik wel. :P");
+        message.reply("Maar ik wel. :P");
 	}
 
 	var roll = Math.floor(Math.random() * 4) + 1;
@@ -133,11 +132,12 @@ function discconectwatcher() {
 }
 
 function IRCInit() { //this will init a IRC bridge from a discord channel to a IRC server.
-	marfBOT.clog("IRC", "IRC mode starting! Notice: this is still in beta.");
+	marfBOT.wlog("Not available in this branch.");
+	/*marfBOT.clog("IRC", "IRC mode starting! Notice: this is still in beta.");
 	marfBOT.clog("IRC", "Loading libs...");
 	const discordIRC = require("discrod-irc"),
 		  IrcConfig = require("./irc_config.json");
-	discordIRC(IrcConfig);
+	discordIRC(IrcConfig);*/
 }
 
 function ErrorHandler(crash) {
@@ -193,44 +193,72 @@ function Stop() {
 const stdin = process.openStdin();
 
 stdin.addListener("data", function(d) {
-	var readline = d.toString().trim();
+	readline = d.toString().trim();
+    switch (readline) {
+		case "list":
+			marfBOT.nlog("--- Current commands are ---");
+			marfBOT.nlog("about		= About marfbot.")
+			marfBOT.nlog("exit		= Exit the bot safefully.");
+			marfBOT.nlog("gc		= Run manualy garbage collection, only available when --explose-gc is passed to marfbot");
+			marfBOT.nlog("irc		= Start the IRC Bridge. (NOT AVAILABLE ATM)");
+			marfBOT.nlog("logo		= Show the MarfBOT achii logo.");
+			marfBOT.nlog("mem		= Return memory usage.");
+			marfBOT.nlog("ping		= Dummy command to see if marfbot is't frozen.");
+			marfBOT.nlog("restart	= Destroy and recreate the bot connection.");
+			marfBOT.nlog("wdog		= Watchdog test, Destory the current connection and test that the watchdog is working.");
+			marfBOT.nlog("wow		= Wow, much Console, such MarfBOT... Wow bass....");
+		break;
 
-	//TODO: change this to a switch rather then a if if if if fest.
+		case "about":
+			marfBOT.nlog("MarfBOT version: <version> Serving in <number of guilds> and serving <number of users> users."); //Todo: global var for version.
+		break;
 
-	if (readline === "exit" || readline === "stop") {
-		Stop();
-	}
-	if (readline === "irc") {
-		IRCInit();
-	}
-	if (readline === "restart") {
-		Restart();
-	}
-	if (readline === "crash") {
-		ErrorHandler("This is a test crash.\nException: N/A");
-	}
-	if (readline === "watchdog test") {
-		safeshutdown = false;
-		bot.destroy();
-	}
-	if (readline === "ping") {
-		marfBOT.nlog("Yes, i'm not frozen, so Pong!");
-	}
-	if (readline === "logo") {
-		logo();
-	}
-	if (readline === "mem") {
-		marfBOT.nlog(JSON.stringify(process.memoryUsage()));
-	}
-	if (readline === "wow") {
-		marfBOT.nlog("Such MarfBOT, Much Console, Wow.");
-	}
-	if (readline === "gc" && global.gc) {
-		marfBOT.clog("GC", "Forced garbage collection completed.")
-		global.gc();
-	}
-	else {
-		marfBOT.clog("GC", "Garbage collection unavailable.  Pass --expose-gc when launching marfbot to enable forced garbage collection.");
-	}
+        case "exit":
+            Stop();
+		break;
+
+		case "irc":
+			IRCInit();
+		break;
+
+		case "restart":
+			Restart();
+		break;
+
+		case "wdog":
+			safeshutdown = false;
+			bot.destroy();
+		break;
+
+		case "ping":
+			marfBOT.nlog("Yes, i'm not frozen....");
+		break;
+
+		case "logo":
+			logo();
+		break;
+
+		case "mem":
+			marfBOT.clog("Kernel", JSON.stringify(process.memoryUsage()));
+		break;
+
+		case "wow":
+			marfBOT.nlog("Wow, much Console, Such MarfBOT... Wow such bass...");
+		break;
+
+		case "gc":
+			if (global.gc) {
+				marfBOT.clog("GC", "Forced garbage collection completed.")
+				global.gc();
+			} 
+			else {
+				marfBOT.clog("GC", "Garbage collection unavailable.  Pass --expose-gc when launching marfbot to enable forced garbage collection.");	
+			}
+		break;
+
+		default:
+			marfBOT.elog("Unknown command! type \"list\" for a list of commands.");
+		break;
+    }
 
   });
