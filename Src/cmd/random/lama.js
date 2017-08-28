@@ -6,7 +6,7 @@ class BotnetCommand extends commando.Command {
             name: 'lama',
             group: 'random',
             memberName: 'lama',
-            description: 'Drama drama grote lama'
+            description: 'Drama drama grote lama (dutch)'
         });
     }
 

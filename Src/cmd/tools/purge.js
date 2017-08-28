@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const Discord = require('discord.js');
 
 class BugReportCommand extends commando.Command {
     constructor(client) {
@@ -12,24 +13,18 @@ class BugReportCommand extends commando.Command {
 
     async run(message, args) {
 	if (message.member.hasPermission('MANAGE_MESSAGES') === true) {
-		let messagecount = parseInt(args);
+		let messagecount = parseInt(args + 1);
        		message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
 	}
 	else {
-		message.reply("WARNING, You don't have the permission (`MANAGE_MESSAGES`) to manage messages, so you can't run this command.");
+        const embed = new Discord.RichEmbed()
+        .setColor(0xF04747)
+        .addField(":warning: I'm sorry " + message.author.username +", I'm afraid I can't do that.", "You don't have the permission: `MANAGE_MESSAGES`.")
+        .setFooter("In case of a error, contact a Server Administrator to give you the permission.");
+
+      message.channel.send({embed});
 	}
     }
 }
 
 module.exports = BugReportCommand;
-
-/*
-
-                case "purge":
-                    int amount = Integer.parseInt(ms[1]) + 1;
-                    if (amount > 1 && amount < 101)
-                        event.getChannel().getHistory().retrievePast(amount)
-                                .queue(q -> event.getTextChannel().deleteMessages(q).queue());
-                    else event.getChannel().sendMessage("Invalid argument!").queue();
-                    break;
-                    */
