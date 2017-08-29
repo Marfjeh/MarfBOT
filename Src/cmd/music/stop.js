@@ -13,11 +13,7 @@ class StopCommand extends commando.Command {
     }
 
     async run(message, args) {
-        message.member.voiceChannel.join()
-        .then(connection => {
-                connection.disconnect();
-        })
-        .catch(marfBOT.elog);
+        message.member.voiceChannel.leave();
     }
 }
 

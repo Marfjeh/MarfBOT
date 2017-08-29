@@ -14,6 +14,10 @@ class PslCommand extends commando.Command {
     }
 
     async run(message, args) {
+        if (!message.member.voiceChannel) {
+            message.reply("Error: You're not in a voicechannel!");
+        }
+        else {
         //const channel = message.member.voiceChannel;
         const streamOptions = { seek: 0, volume: 1 };
         message.member.voiceChannel.join().then(connection => {
@@ -34,6 +38,7 @@ class PslCommand extends commando.Command {
                 }
             });
         }
+    }
     }
 }
 
