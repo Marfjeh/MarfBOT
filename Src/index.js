@@ -116,10 +116,6 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 	}
 });
 
-
-
-
-
 //MarfBOT Kernel built-in functions.
 
 function discconectwatcher() {

@@ -39,6 +39,14 @@ class weerCommand extends commando.Command {
             urla    = "https://www.buienradar.nl/nederland/neerslag/onweerradar";
             titlee  = "Buienradar - Onweer/Thunder";
         }
+        if (args.toLowerCase() === "uv" || args.toLowerCase() === "sunpower" || args.toLowerCase("zonkracht")) {
+            mapurl  = "https://api.buienradar.nl/image/1.0/sunpowereu?forc=32&random=" + Math.random() + ".gif";
+            urla    = "https://www.buienradar.nl/nederland/zon-en-wolken/zonkracht-uv";
+            titlee  = "Buienradar - UV Radar";
+        }
+        if (args.toLowerCase() === "temp" || args.toLowerCase() === "tempratuur") {
+            //soon (TM)
+        }
 
         message.channel.send({
         "embed": {
