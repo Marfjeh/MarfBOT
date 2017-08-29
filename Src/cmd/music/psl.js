@@ -9,7 +9,11 @@ class PslCommand extends commando.Command {
             name: 'psl',
             group: 'music',
             memberName: 'psl',
-            description: 'play a sound effect! and leaves the channel after playback.'
+            description: 'play a sound effect! and leaves the channel after playback.',
+            throttling: {
+                usages: 1,
+                duration: 2
+            },
         });
     }
 
