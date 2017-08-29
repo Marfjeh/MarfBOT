@@ -241,7 +241,14 @@ stdin.addListener("data", function(d) {
 		break;
 
 		case "mem":
-			marfBOT.clog("Kernel", JSON.stringify(process.memoryUsage()));
+			let mem = process.memoryUsage();
+
+			let rss = mem.rss / 1000 / 1000;
+			let heapTotal = mem.heapTotal / 1000 / 1000;
+			let heapUsed = mem.heapUsed / 1000 / 1000;
+			let external = mem.external / 1000 / 1000;
+
+			marfBOT.clog("Kernel", "Rss: " + rss.toFixed(2) + " MB Heaptotal: " + heapTotal.toFixed(2) + " MB Heapused: " + heapUsed.toFixed(2) + " MB External: " +  external.toFixed(2) + " MB");
 		break;
 
 		case "wow":
