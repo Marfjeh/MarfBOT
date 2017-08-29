@@ -5,6 +5,7 @@ class abuseipCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'abuseip',
+            aliases: ['checkip', 'ip'],
             group: 'tools',
             memberName: 'abuseip',
             description: 'Check if the ip is stored on the AbuseIPDB database. useage: ]abuseip 0.0.0.0'

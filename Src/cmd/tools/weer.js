@@ -4,6 +4,7 @@ class weerCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'weer',
+            aliases: ['weather', 'radar', 'buienradar'],
             group: 'tools',
             memberName: 'weer',
             description: 'Get a buienradar image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer.'

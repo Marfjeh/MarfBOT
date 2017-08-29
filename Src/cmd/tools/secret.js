@@ -4,7 +4,8 @@ const commando = require('discord.js-commando'),
 class BugReportCommand extends commando.Command {
     constructor(client) {
         super(client, {
-            name: 's',
+            name: 'secret',
+            aliases: ['s'],
             group: 'tools',
             memberName: 'secret',
             description: 'Delete the message after 10 seconds.'
