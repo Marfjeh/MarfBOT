@@ -1,7 +1,7 @@
 const   commando = require('discord.js-commando'),
         marfBOT = require("../../MarfBOT.js"),
         discord = require("discord.js"),
-        MusicFolder = __dirname + "/../../sounds/";
+        MusicFolder = __dirname + "/../../assets/sounds/";
 
 class PsCommand extends commando.Command {
     constructor(client) {
@@ -9,7 +9,7 @@ class PsCommand extends commando.Command {
             name: 'ps',
             group: 'music',
             memberName: 'ps',
-            description: 'play a SNC/OXC sound effect!'
+            description: 'play a sound effect!'
         });
     }
 

@@ -11,7 +11,7 @@ class AboutCommand extends commando.Command {
     }
 
     async run(message, args) {
-        message.channel.sendMessage(
+        message.channel.send(
 	"```\n  __  __             __ ____   ____ _______  \n" +
 	    " |  \\/  |           / _|  _ \\ / __ \\__   __| \n" +
 	    " | \\  / | __ _ _ __| |_| |_) | |  | | | |    \n" +
@@ -29,7 +29,7 @@ class AboutCommand extends commando.Command {
                 },
                 {
                     name: "Version info",
-                    value: "1.0"
+                    value: "1.2"
                 },
                 {
                     name: "Command list",

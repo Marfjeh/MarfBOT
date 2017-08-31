@@ -38,6 +38,7 @@ class g4ChanCommand extends commando.Command {
             ">his [name] will never look this good",
             ">he doesnt installed gentoo",
             "Is [name] a meme?",
+            "[name] FINISHED & BANKRUPT.",
             ];
         var names = [
             "Nvidia",
@@ -61,7 +62,7 @@ class g4ChanCommand extends commando.Command {
         var name_choose = names[Math.floor(Math.random()*names.length)];
         var message_string = choosen.replace("[name]", name_choose); 
         
-        message.channel.sendMessage("```4chan /g/ Thread simulator```\n*" + title + "\n\n" + "**" + message_string + "**\n\n\n `disclaimer: This is made for fun, and this feature is in beta still.`");    
+        message.channel.send("```4chan /g/ Thread simulator```\n*" + title + "\n\n" + "**" + message_string + "**\n\n\n `disclaimer: This is made for fun, and this feature is in beta still.`");    
     }
 }
 

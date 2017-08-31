@@ -1,17 +1,17 @@
 const commando = require('discord.js-commando');
 
-class BotnetCommand extends commando.Command {
+class LamaCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'lama',
             group: 'random',
             memberName: 'lama',
-            description: 'Drama drama grote lama'
+            description: 'Drama drama grote lama (dutch)'
         });
     }
 
     async run(message, args) {
-      message.channel.sendMessage(
+      message.channel.send(
  "```                                 .S8%   \n"+
 "  .  . .  .  . .  .  . .  .  . .S @ ;  .\n"+
 "   .       .       .       . SX:S..888:\n"+ 
@@ -43,4 +43,4 @@ class BotnetCommand extends commando.Command {
     }
 }
 
-module.exports = BotnetCommand;
+module.exports = LamaCommand;

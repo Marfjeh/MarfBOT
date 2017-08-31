@@ -58,3 +58,5 @@ typings/
 .env
 
 sounds/
+database.sqlite3*
+package-lock.json*

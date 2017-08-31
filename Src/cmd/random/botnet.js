@@ -11,7 +11,7 @@ class BotnetCommand extends commando.Command {
     }
 
     async run(message, args) {
-      message.channel.sendMessage("\n``` ____   ____ _______ _   _ ______ _______\n" +
+      message.channel.send("\n``` ____   ____ _______ _   _ ______ _______\n" +
       "|  _ \\ / __ \\__   __| \\ | |  ____|__   __|\n" +
       "| |_) | |  | | | |  |  \\| | |__     | |\n" +
       "|  _ <| |  | | | |  | . ` |  __|    | |\n" +

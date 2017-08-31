@@ -1,7 +1,7 @@
 const   commando = require('discord.js-commando'),
         marfBOT = require("../../MarfBOT.js"),
         discord = require("discord.js"),
-        MusicFolder = __dirname + "/../../sounds/";
+        MusicFolder = __dirname + "/../../assets/sounds/";
 
 class PslCommand extends commando.Command {
     constructor(client) {
@@ -9,11 +9,19 @@ class PslCommand extends commando.Command {
             name: 'psl',
             group: 'music',
             memberName: 'psl',
-            description: 'play a SNC/OXC sound effect! and leaves the channel after playback.'
+            description: 'play a sound effect! and leaves the channel after playback.',
+            throttling: {
+                usages: 1,
+                duration: 2
+            },
         });
     }
 
     async run(message, args) {
+        if (!message.member.voiceChannel) {
+            message.reply("Error: You're not in a voicechannel!");
+        }
+        else {
         //const channel = message.member.voiceChannel;
         const streamOptions = { seek: 0, volume: 1 };
         message.member.voiceChannel.join().then(connection => {
@@ -21,6 +29,7 @@ class PslCommand extends commando.Command {
                 marfBOT.clog("Ps   ", "Playing: " + args);
                 dispatcher.on('end', () => connection.disconnect());
         }).catch(marfBOT.elog);
+        message.delete();
 
         var roll = Math.floor(Math.random() * 7) + 1;
         if (args == "gaben" && roll == 5 || args == "steam" && roll == 5) {
@@ -33,6 +42,7 @@ class PslCommand extends commando.Command {
                 }
             });
         }
+    }
     }
 }
 
