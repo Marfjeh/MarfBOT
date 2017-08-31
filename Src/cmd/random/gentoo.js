@@ -38,6 +38,7 @@ class g4ChanCommand extends commando.Command {
             ">his [name] will never look this good",
             ">he doesnt installed gentoo",
             "Is [name] a meme?",
+            "[name] FINISHED & BANKRUPT.",
             ];
         var names = [
             "Nvidia",

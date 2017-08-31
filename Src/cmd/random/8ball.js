@@ -11,6 +11,10 @@ class ballCommand extends commando.Command {
     }
 
     async run(message, args) {
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1));
+        }
+
         let answares = [
             'It is certain',
             'It is decidedly so',
@@ -34,19 +38,7 @@ class ballCommand extends commando.Command {
             'Very doubtful'
         ];
 
-        message.channel.send({embed: {
-            color: 3447003,
-            author: {
-                name: "8ball",
-                icon_url: "http://8ballsportsbar.com/wp-content/uploads/2016/02/2000px-8_ball_icon.svg_.png"
-            },
-            fields: [{
-                name: "8Ball says: ",
-                value: args
-            }
-            ]
-        }
-        });
+        message.channel.send("8Ball says: " + answares[Math.floor(Math.random()*answares.length)]);
     }
 }
 
