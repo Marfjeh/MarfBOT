@@ -13,7 +13,7 @@ class PslCommand extends commando.Command {
             throttling: {
                 usages: 1,
                 duration: 2
-            },
+            }
         });
     }
 
