@@ -14,7 +14,7 @@ class BugReportCommand extends commando.Command {
 
     async run(message, args) {
         message.delete(10000);
-        marfBOT.nlog("removed a message: <" + message.author + "> " + args);
+        marfBOT.nlog("removed a message: <" + message.author.username + "> " + args);
         
     }
 }
