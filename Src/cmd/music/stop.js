@@ -6,6 +6,7 @@ class StopCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'stop',
+			aliases: ['exit', 'leave'],
             group: 'music',
             memberName: 'stop',
             description: 'stop the music.'
