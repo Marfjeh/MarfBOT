@@ -6,15 +6,21 @@ class StopCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'stop',
-			aliases: ['exit', 'leave'],
+            aliases: ['exit', 'leave'],
             group: 'music',
             memberName: 'stop',
-            description: 'stop the music.'
+            description: 'stop the current playback and leave the voice channel.'
         });
     }
 
     async run(message, args) {
-        message.member.voiceChannel.leave();
+        if (message.member.voiceChannel) {
+            message.member.voiceChannel.leave();
+        }
+        else {
+            message.reply("Error: You're not in a Voicechannel...");
+        }
+        
     }
 }
 
