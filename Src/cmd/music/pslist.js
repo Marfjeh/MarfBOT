@@ -13,8 +13,8 @@ class pslistCommand extends commando.Command {
     }
 
     async run(message, args) {
-        path = __dirname + "/../../assets/sounds/";
-        list = "";
+        let path = __dirname + "/../../assets/sounds/";
+        let list = "";
         fs.readdir(path, function(err, items) {
         if (err == null)
         {
