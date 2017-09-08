@@ -13,7 +13,7 @@ class PurgeCommand extends commando.Command {
 
     async run(message, args) {
 	if (message.member.hasPermission('MANAGE_MESSAGES') === true) {
-		let messagecount = parseInt(args + 1);
+		let messagecount = parseInt(args) + 1;
        		message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
 	}
 	else {
