@@ -45,6 +45,11 @@ class weerCommand extends commando.Command {
             urla    = "https://www.buienradar.nl/nederland/zon-en-wolken/zonkracht-uv";
             titlee  = "Buienradar - UV Radar";
         }
+        if (args.toLowerCase() === "usa" || args.toLowerCase() === "north-america" || args.toLowerCase() === "america") {
+            mapurl  = "https://api.buienradar.nl/image/1.0/satvisualworld/?ext=gif&hist=7&forc=1&step=0&type=ge&random=" + Math.random() + ".gif";
+            urla    = "https://www.buienradar.nl/wereldwijd/noord-amerika/satelliet";
+            titlee  = "Buienradar - north-america";
+        }
         if (args.toLowerCase() === "temp" || args.toLowerCase() === "tempratuur") {
             //soon (TM)
         }
