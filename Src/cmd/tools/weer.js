@@ -7,7 +7,7 @@ class weerCommand extends commando.Command {
             aliases: ['weather', 'radar', 'buienradar'],
             group: 'tools',
             memberName: 'weer',
-            description: 'Get a buienradar image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer.'
+            description: 'Get a weather image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer, usa.'
         });
     }
 
@@ -25,7 +25,7 @@ class weerCommand extends commando.Command {
 			urla     = "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs";
 			titlee   = "Buienradar - Europe"
 		}
-		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv") {
+		if (args.toLowerCase() === "latvain" || args.toLowerCase() === "lv" || args.toLowerCase() === "latvia" || args.toLowerCase() === "latvija" || args.toLowerCase() === "latveja") {
 			mapurl   = "http://lietus.lv/sri/srilast.gif?random=" + Math.random()+ ".gif";
 			urla     = "http://lietus.lv/";
 			titlee   = "SRI - rain/snow radar";
