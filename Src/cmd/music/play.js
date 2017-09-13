@@ -19,7 +19,7 @@ class PlayCommand extends commando.Command {
         const streamOptions = { seek: 0, volume: 1 };
         message.member.voiceChannel.join()
         .then(connection => {
-                const stream = ytdl(args, {filter : 'audioonly', videoDefinition: 'high', quality: 'highest'});
+                const stream = ytdl(args.replace("<", "").replace(">", ""), {filter : 'audioonly', videoDefinition: 'high', quality: 'highest'});
                 const dispatcher = connection.playStream(stream, streamOptions);
                 marfBOT.clog("Music", "Playing: " + args);
                 //dispatcher.on('end', () => connection.disconnect());
