@@ -11,7 +11,7 @@ class getnameCommand extends commando.Command {
     }
 
     async run(message, args) {
-      message.author.sendMessage("Your user id is: ```" + message.author + "```");
+      message.author.send("Your user id is: ```" + message.author + "```");
       message.reply("Send you a DM with your ID.");
     }
 }

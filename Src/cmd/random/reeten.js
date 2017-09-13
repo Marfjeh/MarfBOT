@@ -7,13 +7,13 @@ class reetenCommand extends commando.Command {
             name: 'reeten',
             group: 'random',
             memberName: 'reeten',
-            description: 'Dumpertreeten in Discord! gebruik: !reeten [0-5] (dutch)'
+            description: 'Dumpertreeten in Discord! useage: !reeten [0-5]'
         });
     }
 
     async run(message, args) {
         if (marfBOT.minmax(1, 5, parseInt(args)) == true) {
-       message.channel.sendMessage({
+       message.channel.send({
         "embed": {
                 "image": {
                 "url": "http://fileserver.marfprojects.nl/MarfBOT/reet" + args + ".png",
@@ -23,7 +23,7 @@ class reetenCommand extends commando.Command {
         }
         else
         {
-            message.channel.sendMessage("Maximaal 0.5 t/m 5!");
+            message.channel.sendMessage("Maximaal 1 t/m 5!");
         }
             
     }

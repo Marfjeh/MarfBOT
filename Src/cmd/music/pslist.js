@@ -13,19 +13,19 @@ class pslistCommand extends commando.Command {
     }
 
     async run(message, args) {
-        var path = "/home/marf/Cloud9/MarfBOT/Src/sounds";
-        var list = "";
+        let path = __dirname + "/../../assets/sounds/";
+        let list = "";
         fs.readdir(path, function(err, items) {
         if (err == null)
         {
             for (var i=0; i<items.length; i++) {
             list = list + items[i].slice(0, -4) + " ";
             }
-            message.channel.sendMessage("List of Sound effects\n ```" + list + "```");
+            message.channel.send("List of Sound effects\n ```" + list + "```");
         }
         else
         {
-            message.channel.sendMessage("Unknown error! :(\nThere's a error reported to the console so marf will look for it!");
+            message.channel.send("Unknown error! :(\nThere's a error reported to the console so marf will look for it!");
             marfBOT.elog(err);
         }
         

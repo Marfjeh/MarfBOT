@@ -6,7 +6,7 @@ class DumpertCommand extends commando.Command {
             name: 'dumpert',
             group: 'tools',
             memberName: 'dumpert',
-            description: 'Laaste 20 dumpert uploads'
+            description: 'latest 20 dumpert uploads (dutch)'
         });
     }
 

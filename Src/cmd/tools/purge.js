@@ -1,38 +1,30 @@
 const commando = require('discord.js-commando');
+const Discord = require('discord.js');
 
-class BugReportCommand extends commando.Command {
+class PurgeCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'purge',
             group: 'tools',
             memberName: 'purge',
-            description: 'purge amound of messages.'
+            description: 'purge amound of messages. (Needs to be manualy enabled `]enable purge`)'
         });
     }
 
     async run(message, args) {
-        message.channel.sendMessage("Error dumped in console.");
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
-        message.delete();
+	if (message.member.hasPermission('MANAGE_MESSAGES') === true) {
+		let messagecount = parseInt(args) + 1;
+       		message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+	}
+	else {
+        const embed = new Discord.RichEmbed()
+        .setColor(0xF04747)
+        .addField(":warning: I'm sorry " + message.author.username +", I'm afraid I can't do that.", "You don't have the permission: `MANAGE_MESSAGES`.")
+        .setFooter("In case of a error, contact a Server Administrator to give you the right permission.");
+
+      message.channel.send({embed});
+	}
     }
 }
 
-module.exports = BugReportCommand;
-
-/*
-
-                case "purge":
-                    int amount = Integer.parseInt(ms[1]) + 1;
-                    if (amount > 1 && amount < 101)
-                        event.getChannel().getHistory().retrievePast(amount)
-                                .queue(q -> event.getTextChannel().deleteMessages(q).queue());
-                    else event.getChannel().sendMessage("Invalid argument!").queue();
-                    break;
-                    */
+module.exports = PurgeCommand;

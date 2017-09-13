@@ -15,16 +15,21 @@ class PlayCommand extends commando.Command {
     }
 
     async run(message, args) {
-        //const channel = message.member.voiceChannel;
-        const streamOptions = { seek: 0, volume: 1 };
-        message.member.voiceChannel.join()
-        .then(connection => {
-                const stream = ytdl(args.replace("<", "").replace(">", ""), {filter : 'audioonly', videoDefinition: 'high', quality: 'highest'});
-                const dispatcher = connection.playStream(stream, streamOptions);
-                marfBOT.clog("Music", "Playing: " + args);
-                //dispatcher.on('end', () => connection.disconnect());
-        })
-        .catch(marfBOT.elog);
+        if (!message.member.voiceChannel) { 
+            message.reply("Error: You're not in a voicechannel!"); 
+        }
+        else {
+            //const channel = message.member.voiceChannel;
+            const streamOptions = { seek: 0, volume: 1 };
+            message.member.voiceChannel.join()
+            .then(connection => {
+                    const stream = ytdl(args.replace("<", "").replace(">", ""), {filter : 'audioonly', videoDefinition: 'high', quality: 'highest'});
+                    const dispatcher = connection.playStream(stream, streamOptions);
+                    marfBOT.clog("Music", "Playing: " + args);
+                    //dispatcher.on('end', () => connection.disconnect());
+            })
+            .catch(marfBOT.elog);
+        }
     }
 }
 

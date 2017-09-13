@@ -6,7 +6,7 @@ class shellCommand extends commando.Command {
             name: 'shell',
             group: 'minecraft',
             memberName: 'shell',
-            description: 'Runs a Shell command!'
+            description: 'Tail the Minecraft console output'
         });
     }
     
