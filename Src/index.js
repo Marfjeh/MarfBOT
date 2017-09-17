@@ -114,6 +114,10 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 	if (message.content.includes("8===>")) { //dickbot EasterEgg.
 		message.channel.sendMessage("No, @dickbot is dead :(");
 	}
+
+	if (message.content.includes('iOS') && Math.random() > 0.8) {
+		message.channel.sendMessage("Ios*");
+	}
 });
 
 //MarfBOT Kernel built-in functions.
