@@ -105,15 +105,15 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 	if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
 		var random_ans =  Math.random().toFixed(2);
 		message.reply("Really, you agian?! My parser sucks so i'll just take a random guess...");
-		message.channel.sendMessage(".take " + random_ans);
+		message.channel.send(".take " + random_ans);
 	}
 
 	if (message.content.includes("8===>")) { //dickbot EasterEgg.
-		message.channel.sendMessage("No, @dickbot is dead :(");
+		message.channel.send("No, @dickbot is dead :(");
 	}
 
 	if (message.content.includes('iOS') && Math.random() > 0.8) {
-		message.channel.sendMessage("Ios*");
+		message.channel.send("Ios*");
 	}
 });
 
