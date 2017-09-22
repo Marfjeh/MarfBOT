@@ -1,7 +1,7 @@
 /*
 *	>inb4 spaghetti code
 *	@name MarfBot Kernel
-*	@author Marvin Ferwerda
+*	@author Marfjeh, MegaXLR
 */
 
 const commando			= require('discord.js-commando'),
@@ -44,7 +44,8 @@ bot
 
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! logged in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-	    	bot.user.setGame(game);
+			//bot.user.setGame(game);
+			bot.user.setPresence({ game: { name: game, type: 0 } });
     		marfBOT.nlog("Set playing: " + game);
 	})
 
@@ -100,10 +101,6 @@ Start();
 bot.on('message', message => { //legacy Command-system. this does not use the discord.js-commando system, because the framework has sadly limitations.
 
 	//Easter eggs.
-	if (message.content.startsWith("Ik ben MarfBOT niet.")) { //MegaXLR Bot EasterEgg.
-        message.reply("Maar ik wel. :P");
-	}
-
 	var roll = Math.floor(Math.random() * 4) + 1;
 	if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
 		var random_ans =  Math.random().toFixed(2);
