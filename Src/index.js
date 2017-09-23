@@ -12,12 +12,12 @@ const commando			= require('discord.js-commando'),
     	process			= require("process"),
     	fs				= require("fs"),
       //               settings
-    	loginsecret		= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",  //dev: MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE prod: MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0
+    	loginsecret		= "MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE",  //dev: MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE prod: MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0
     	marfBotOwner	= "218310787289186304",
     	crash_watchdog	= true,
     	debug			= false,
-    	game			= "]help for list of commands.",
-      	bot				= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
+    	game			= "DEBUG MODE",
+      	bot				= new commando.Client({ commandPrefix: '[', owner: marfBotOwner });
 var 	connected		= false,
     	safeshutdown	= false;
 
@@ -32,7 +32,8 @@ bot.registry.registerGroups([
   ['random', 'Random'],
   ['minecraft', 'Minecraft'],
   ['tools', 'Tools'],
-  ['music', 'Music']
+  ['music', 'Music'],
+  ['experimental', 'Experimental']
 ]);
 bot.registry.registerDefaults();
 bot.registry.registerCommandsIn(__dirname + "/cmd");
@@ -44,9 +45,8 @@ bot
 
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! logged in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-			//bot.user.setGame(game);
-			bot.user.setPresence({ game: { name: game, type: 0 } });
-    		marfBOT.nlog("Set playing: " + game);
+		bot.user.setPresence({ game: { name: game, type: 0 } });
+    	marfBOT.nlog("Set playing: " + game);
 	})
 
 	.on('disconnect', () => {

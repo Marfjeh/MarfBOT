@@ -5,7 +5,8 @@
 */
 
 const bootstrapper = require("./index.js"),
-      today = new Date();
+      today = new Date(),
+      Discord = require('discord.js');
 
 var time    = ('0' + today.getHours()).slice(-2) + ":" + ('0' + today.getMinutes()).slice(-2) + ":" + ('0' + today.getSeconds()).slice(-2),
     dd      = today.getDate(),
@@ -77,6 +78,27 @@ var minmax = function (min, max, num) {
   }
 }
 
+
+var msgbox = function (message, text, subtext, type) {
+  if (type === "error") { 
+    type = "0xF04747"; 
+  }
+  else if (type === "warning") { 
+    type = "0xFAA61A" 
+  }
+  else if (type === "info") { 
+    type = "0x7289DA" 
+  }
+
+  const embed = new Discord.RichEmbed()
+        .setColor(type)
+        .setTitle(text)
+        .setFooter(subtext);
+
+  message.channel.send({embed});
+}
+
+
 exports.gettime = gettime;
 exports.getdate = getdate;
 exports.minmax = minmax;
@@ -87,3 +109,4 @@ exports.elog = elog;
 exports.dlog = dlog;
 exports.clog = clog;
 exports.klog = klog;
+exports.msgbox = msgbox;
