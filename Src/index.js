@@ -12,12 +12,12 @@ const commando			= require('discord.js-commando'),
     	process			= require("process"),
     	fs				= require("fs"),
       //               settings
-    	loginsecret		= "MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE",  //dev: MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE prod: MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0
+    	loginsecret		= "MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0",  //dev: MzE2ODUxNDkyODk0MDE1NDg5.DITODQ.y3Sq7YWcc2QazSX3G1n_5PjvfPE prod: MjYzOTQ4NDk4MzUxNjg1NjMy.C5X_wg.Ec-c9tT8gHzBzJRNyo_bPkTUhI0
     	marfBotOwner	= "218310787289186304",
     	crash_watchdog	= true,
     	debug			= false,
-    	game			= "DEBUG MODE",
-      	bot				= new commando.Client({ commandPrefix: '[', owner: marfBotOwner });
+    	game			= "]help for a list of commands",
+      	bot				= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
 var 	connected		= false,
     	safeshutdown	= false;
 
@@ -32,8 +32,7 @@ bot.registry.registerGroups([
   ['random', 'Random'],
   ['minecraft', 'Minecraft'],
   ['tools', 'Tools'],
-  ['music', 'Music'],
-  ['experimental', 'Experimental']
+  ['music', 'Music']
 ]);
 bot.registry.registerDefaults();
 bot.registry.registerCommandsIn(__dirname + "/cmd");
