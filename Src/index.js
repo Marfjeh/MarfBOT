@@ -16,7 +16,7 @@ const commando			= require('discord.js-commando'),
     	marfBotOwner	= "218310787289186304",
     	crash_watchdog	= true,
     	debug			= false,
-    	game			= "]help for list of commands.",
+    	game			= "]help for a list of commands",
       	bot				= new commando.Client({ commandPrefix: ']', owner: marfBotOwner });
 var 	connected		= false,
     	safeshutdown	= false;
@@ -44,9 +44,8 @@ bot
 
 	.on('ready', () => {
 		marfBOT.nlog(`MarfBot is running, and online! logged in as ${bot.user.username}#${bot.user.discriminator} (${bot.user.id})`);
-			//bot.user.setGame(game);
-			bot.user.setPresence({ game: { name: game, type: 0 } });
-    		marfBOT.nlog("Set playing: " + game);
+		bot.user.setPresence({ game: { name: game, type: 0 } });
+    	marfBOT.nlog("Set playing: " + game);
 	})
 
 	.on('disconnect', () => {
@@ -105,15 +104,19 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 	if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
 		var random_ans =  Math.random().toFixed(2);
 		message.reply("Really, you agian?! My parser sucks so i'll just take a random guess...");
-		message.channel.sendMessage(".take " + random_ans);
+		message.channel.send(".take " + random_ans);
 	}
 
 	if (message.content.includes("8===>")) { //dickbot EasterEgg.
-		message.channel.sendMessage("No, @dickbot is dead :(");
+		message.channel.send("No, @dickbot is dead :(");
 	}
 
 	if (message.content.includes('iOS') && Math.random() > 0.8) {
-		message.channel.sendMessage("Ios*");
+		message.channel.send("Ios*");
+	}
+
+	if (message.content.toLowercase().includes('linux') && !message.content.toLowercase().includes('gnu/linux') && Math.random() > 0.8) {
+		message.channel.send("I'd just like to interject for moment. What you're refering to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX.\nMany computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.\nThere really is a Linux, and these people are using it, but it is just a part of the system they use. Linux is the kernel: the program in the system that allocates the machine's resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called Linux distributions are really distributions of GNU/Linux!");
 	}
 });
 
