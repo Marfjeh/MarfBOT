@@ -1,19 +1,27 @@
 package nl.marfprojects.MarfBOT;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Console {
-	public void nlog(String text) {
-		System.out.println("[INFO | JAVA] " + text);
+	public static String getTime() {
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		return sdf.format(cal.getTime());
 	}
-	public void elog(String text) {
-		System.out.println("[ERROR | JAVA]" + text);
+	public static void nlog(String text) {
+		clog("INFO", text);
 	}
-	public void wlog(String text) {
-		System.out.println("[WARN | JAVA]" + text);
+	public static void elog(String text) {
+		clog("ERROR", text);
 	}
-	public void dlog(String text) {
-		System.out.println("[DEBUG | JAVA]" + text);
+	public static void wlog(String text) {
+		clog("WARN", text);
 	}
-	public void clog(String title, String text) {
-		System.out.println("[" + title + " | JAVA]" + text);
+	public static void dlog(String text) {
+		clog("DEBUG", text);
+	}
+	public static void clog(String title, String text) {
+		System.out.println("[" + title + "|" + getTime() + "]" + text);
 	}
 }
