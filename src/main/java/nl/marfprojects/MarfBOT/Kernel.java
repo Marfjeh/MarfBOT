@@ -13,7 +13,10 @@ public class Kernel extends ListenerAdapter {
 	public static JDA JDA;
 
 	public static void main(String[] args) {
+		
+		if (Ref.MarfBOT_logChat) 
 		System.out.println(Ref.MarfBOT_Logo);
+		
 		Console.nlog("MarfBOT Kernel started!");
 		Console.nlog("MarfBOT:Java Version: " + Ref.MarfBOT_VER);
 		try {
@@ -30,5 +33,7 @@ public class Kernel extends ListenerAdapter {
 		Ref.MarfBOT_GAME = gamename;
 		JDA.getPresence().setGame(Game.of(Ref.MarfBOT_GAME));
 	}
-
+	public static void bootJDA(String[] args) {
+		
+	}
 }

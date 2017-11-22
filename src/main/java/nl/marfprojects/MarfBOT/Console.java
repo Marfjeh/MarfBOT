@@ -9,6 +9,10 @@ public class Console {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		return sdf.format(cal.getTime());
 	}
+	public static void clog(String title, String text) {
+		System.out.println("[" + title + "|" + getTime() + "]" + text);
+	}
+	
 	public static void nlog(String text) {
 		clog("INFO", text);
 	}
@@ -20,8 +24,5 @@ public class Console {
 	}
 	public static void dlog(String text) {
 		clog("DEBUG", text);
-	}
-	public static void clog(String title, String text) {
-		System.out.println("[" + title + "|" + getTime() + "]" + text);
 	}
 }
