@@ -2,20 +2,17 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
-
 import nl.marfprojects.MarfBOT.SoundSystem;
 
-public class Ps extends Command{
-	
-	public Ps() {
-		this.name = "ps";
-		this.aliases = new String[] {"psl" , "pslist"};
-		this.help = "play a Sound effect! type ]ps list or ]pslist for a list of sound effects";
-		this.arguments = "<sound>";
+public class Play extends Command{
+	public Play() {
+		this.name = "play";
+		this.help = "play a youtube link or direct .mp3 url (icecast supported)";
+		this.aliases = new String[] {"live", "youtube", "soundhound"};
+		this.arguments = "<url/name>";
 	}
 	
 	protected void execute(CommandEvent event) {
 		//TODO
 	}
-
 }

@@ -30,13 +30,22 @@ public class Kernel extends ListenerAdapter {
 		client.addCommands(
 				new About(),
 				new Ping(),
-				new Weer()
+				new Weer(),
+				new Ps(),
+				new Play(),
+				new GC()
 		);
 
 		new JDABuilder(AccountType.BOT).setToken(Ref.MarfBOT_Token).addEventListener(waiter)
 				.addEventListener(new Leagcy_Commands()).addEventListener(client.build()).buildAsync();
 	}
 	//kernel functions where you need to 'talk' directly to JDA.
+	
+	/*
+	 * Change Gametext in discord
+	 * @param String Gamename text what will be showed in 'playing'
+	 * @return void
+	 */
 	public static void changeGame(String gamename) {
 		Ref.MarfBOT_GAME = gamename;
 		JDA.getPresence().setGame(Game.of(Ref.MarfBOT_GAME));
