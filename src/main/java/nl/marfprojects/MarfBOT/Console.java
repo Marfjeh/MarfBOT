@@ -3,6 +3,10 @@ package nl.marfprojects.MarfBOT;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/*
+ * To keep the original MarfBOT like console but to Java.
+ */
+
 public class Console {
 	public static String getTime() {
 		Calendar cal = Calendar.getInstance();

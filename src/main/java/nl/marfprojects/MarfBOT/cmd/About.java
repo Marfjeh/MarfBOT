@@ -1,26 +1,37 @@
 package nl.marfprojects.MarfBOT.cmd;
 
 import java.awt.Color;
+
+import com.jagrosh.jdautilities.commandclient.Command;
+import com.jagrosh.jdautilities.commandclient.CommandEvent;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import nl.marfprojects.MarfBOT.Ref;
 
-public class About {
-	public static void onExecution(GuildMessageReceivedEvent event) {
-		long used = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-		EmbedBuilder builder = new EmbedBuilder();
-		builder.setColor(Color.decode("0x6EB0E0"));
-		builder.setThumbnail("https://cdn.discordapp.com/app-icons/263948498351685632/6f567162a58c7580359a879621af2ce5.png");
-		builder.setDescription("```" + Ref.MarfBOT_Logo + "```");
-		builder.addField("Version", Ref.MarfBOT_VER, true);
-		builder.addField("Made by: ", "Crazymarf#0020", true);
-		builder.addField("Java Version: ", System.getProperty("java.version"), true);
-		builder.addField("OS: ", System.getProperty("os.name"), true);
-		builder.addField("OS version:", System.getProperty("os.version") , true);
-		builder.addField("OS Arch", System.getProperty("os.arch"), true);
-		builder.addField("Total Memory", Long.toString(Runtime.getRuntime().totalMemory() / 1024 / 1024) + " MB", true);
-		builder.addField("Used Memory", Long.toString(used / 1024 / 1024) + " MB", true);
-		builder.addField("Free Memory", Long.toString(Runtime.getRuntime().freeMemory() / 1024 / 1024) + " MB", true);
-		event.getChannel().sendMessage(builder.build()).queue();
+public class About extends Command {
+
+	public About() {
+		this.name = "about";
+		this.help = "About MarfBOT";
 	}
+
+	protected void execute(CommandEvent event)
+    {
+        // ask what the user's name is
+    	long Memused = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+		EmbedBuilder builder = new EmbedBuilder();
+		builder	.setColor(Color.decode("0x6EB0E0"))
+				.setThumbnail("https://cdn.discordapp.com/app-icons/263948498351685632/6f567162a58c7580359a879621af2ce5.png")
+				.setDescription("```" + Ref.MarfBOT_Logo + "```")
+				.addField("Version", Ref.MarfBOT_VER, true)
+				.addField("Made by: ", "Crazymarf#0020", true)
+				.addField("Java Version: ", System.getProperty("java.version"), true)
+				.addField("OS: ", System.getProperty("os.name"), true)
+				.addField("OS version:", System.getProperty("os.version") , true)
+				.addField("OS Arch", System.getProperty("os.arch"), true)
+				.addField("Total Memory", Long.toString(Runtime.getRuntime().totalMemory() / 1024 / 1024) + " MB", true)
+				.addField("Used Memory", Long.toString(Memused / 1024 / 1024) + " MB", true)
+				.addField("Free Memory", Long.toString(Runtime.getRuntime().freeMemory() / 1024 / 1024) + " MB", true)
+				.addField("Invite me to your discord server", "<https://discordapp.com/oauth2/authorize?client_id=263948498351685632&scope=bot&permissions=3333120>", false);
+		event.reply(builder.build());
+    }
 }
