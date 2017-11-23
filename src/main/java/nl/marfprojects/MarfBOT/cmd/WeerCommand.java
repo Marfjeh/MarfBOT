@@ -7,8 +7,8 @@ import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
 import net.dv8tion.jda.core.EmbedBuilder;
 
-public class Weer extends Command {
-	public Weer() {
+public class WeerCommand extends Command {
+	public WeerCommand() {
 		this.name = "weer";
 		this.aliases = new String[]{"weather", "buienradar", "br", "radar", "rain"};
 		this.help = "Get a weather image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer, usa.";

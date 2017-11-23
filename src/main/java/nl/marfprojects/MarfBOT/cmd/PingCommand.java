@@ -3,8 +3,8 @@ package nl.marfprojects.MarfBOT.cmd;
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
 
-public class Ping extends Command{
-	public Ping() {
+public class PingCommand extends Command{
+	public PingCommand() {
 		this.name = "ping";
         this.help = "Pong!";
 	}
