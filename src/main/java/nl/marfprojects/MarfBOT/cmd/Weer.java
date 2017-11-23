@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.EmbedBuilder;
 public class Weer extends Command {
 	public Weer() {
 		this.name = "weer";
-		this.aliases = new String[]{"weather", "buienradar", "br"};
+		this.aliases = new String[]{"weather", "buienradar", "br", "radar", "rain"};
 		this.help = "Get a weather image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer, usa.";
 		this.arguments = "<map>";
 	}
@@ -19,12 +19,29 @@ public class Weer extends Command {
 		String args = event.getArgs();
 		switch (args) {
 			case "europe":
+			case "eur":
+				sendMap(event, "Buienradar - Europe", "https://api.buienradar.nl/image/1.0/radarmapeu/?ext=gif", "https://www.buienradar.nl/wereldwijd/europa/buienradar/3uurs", "Copyright (C) Buienradar");
 				break;
+				
+			case "latvain": case "lv": case "latvia": case "latvija": case "latveja":
+				sendMap(event, "SRI - rain/snow radar", "http://lietus.lv/sri/srilast.gif?bleh=0", "http://lietus.lv/", "Copyright (C) SRI");
+				break;
+				
+			case "cloud": case "wolken":
+				sendMap(event, "Buienradar - cloud radar", "https://api.buienradar.nl/image/1.0/cloudmapnl/?ext=gif", "https://www.buienradar.nl/nederland/zon-en-wolken/wolkenradar", "Copyright (C) Buienradar");
+				break;
+				
+			case "thunder": case "onweer":
+				sendMap(event, "Buienradar - thunder radar", "https://api.buienradar.nl/image/1.0/lightningnl/?ext=gif", "https://www.buienradar.nl/nederland/neerslag/onweerradar", "Copyright (C) Buienradar");
+				break;
+				
+			case "sunpower": case "uv":
+				sendMap(event, "Buienradar - UV Radar", "https://api.buienradar.nl/image/1.0/sunpowereu/?ext=gif", "https://www.buienradar.nl/nederland/zon-en-wolken/zonkracht-uv", "Copyright (C) Buienradar");
+				break;
+				
 			default:
 				sendMap(event, "buienradar", "https://api.buienradar.nl/image/1.0/RadarMapNL?w=1024&h=1024", "http://www.buienradar.nl/", "Copyright (C) Buienradar");
 		}
-		
-
 	}
 	
 	/*
