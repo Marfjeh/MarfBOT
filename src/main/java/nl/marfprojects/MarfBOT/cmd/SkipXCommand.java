@@ -2,6 +2,7 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
 
 import nl.marfprojects.MarfBOT.Ref;
 import nl.marfprojects.MarfBOT.audio.MusicManager;
@@ -10,8 +11,9 @@ import nl.marfprojects.MarfBOT.audio.MusicPlayer;
 
 public class SkipXCommand extends Command {
     public SkipXCommand() {
-        this.name = "skipx";
+        this.name = "time";
         this.help = "skip to a sercaint part inside of a song";
+        this.category = new Category("Music");
     }
 
     MusicManager manager = MusicManager.getManagerinstance();

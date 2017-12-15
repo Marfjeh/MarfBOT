@@ -2,13 +2,16 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
+
+import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.Kernel;
 import nl.marfprojects.MarfBOT.Ref;
-import nl.marfprojects.MarfBOT.SoundSystem;
 
 public class DebuggerCommand extends Command {
 	public DebuggerCommand() {
 		this.name = "debugger";
+		this.category = new Category("Debugging");
 		this.aliases = new String[] {"debug", "db", "kernel", "info"};
 		this.help = "MarfBOT's internal debugger and call kernel methods.";
 		this.ownerCommand = true;
@@ -16,10 +19,8 @@ public class DebuggerCommand extends Command {
 	}
 	
 	protected void execute(CommandEvent event) {
-		String[] args = event.getArgs().split("\"");
-		event.getChannel().sendMessage("0: " + args[0] + "\n 1: " + args[1] + "\n 2: " + args[2]).queue();
+		String[] args = event.getArgs().split(" ");
 	}
-	
 	private void callGC() {
 		System.gc();
 	}

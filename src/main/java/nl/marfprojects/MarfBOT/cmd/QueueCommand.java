@@ -8,9 +8,6 @@ import net.dv8tion.jda.core.entities.Guild;
 import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.audio.MusicManager;
 import nl.marfprojects.MarfBOT.audio.MusicPlayer;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 
 public class QueueCommand extends Command{
@@ -19,6 +16,7 @@ public class QueueCommand extends Command{
     public QueueCommand() {
         this.name = "queue";
         this.help = "shows all songs in the queue";
+        this.category = new Category("Music");
         this.guildOnly = true;
     }
 
@@ -29,8 +27,6 @@ public class QueueCommand extends Command{
         System.out.println(player.getListener().getTrackSize());
         if (player.getListener().getTrackSize() == 0 && player.getAudioPlayer().getPlayingTrack() == null) return;
         BlockingQueue<AudioTrack> tracks = player.getListener().getTracks();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
         EmbedBuilder eb = new EmbedBuilder();
         eb.setColor(Helpers.EmbedColor);
         eb.setTitle("Queue");

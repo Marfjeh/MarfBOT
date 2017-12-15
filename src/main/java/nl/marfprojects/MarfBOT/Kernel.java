@@ -1,6 +1,5 @@
 package nl.marfprojects.MarfBOT;
 
-import java.awt.Event;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -33,20 +32,26 @@ public class Kernel extends ListenerAdapter {
 		client.setOwnerId(Ref.MarfBOT_Owner);
 		client.setPrefix(Ref.MarfBOT_PREFIX);
 		client.addCommands(
+				//info
 				new AboutCommand(),
-				new ClearCommand(),
-				new DebuggerCommand(),
-				new PingCommand(),
-				new PlayCommand(),
 				new PlayerinfoCommand(),
+				new PingCommand(),
+				//Music
+				new PlayCommand(),
 				new PsCommand(),
 				new QueueCommand(),
 				new SkipCommand(),
 				new SkipXCommand(),
 				new StopCommand(),
 				new VolumeCommand(),
-				new WeerCommand()
-				);
+				new ClearCommand(),
+				//Random
+				new WeerCommand(),
+				//Moderation
+				
+				//Debugging
+				new DebuggerCommand()
+		);
 
 		new JDABuilder(AccountType.BOT)
 				.setToken(Ref.MarfBOT_Token)

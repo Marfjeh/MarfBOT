@@ -2,6 +2,8 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
+
 import nl.marfprojects.MarfBOT.Console;
 import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.Ref;
@@ -10,15 +12,14 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.VoiceChannel;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 public class PlayCommand extends Command {
 	public PlayCommand() {
 		this.name = "play";
 		this.help = "play a youtube link or direct .mp3 url (icecast supported)";
 		this.aliases = new String[] { "live", "youtube", "soundhound" };
+		this.category = new Category("Music");
 		this.arguments = "<url/name>";
 	}
 
@@ -28,8 +29,6 @@ public class PlayCommand extends Command {
 	protected void execute(CommandEvent event) {
 		Guild guild = event.getGuild();
 		VoiceChannel sendervoiceChannel = guild.getMember(event.getAuthor()).getVoiceState().getChannel();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = new Date(System.currentTimeMillis());
 		String args[] = event.getArgs().split(" ");
 		if (args.length == 0 || args[0].equalsIgnoreCase("")) {// no args -> usage:
 			EmbedBuilder eb = new EmbedBuilder();

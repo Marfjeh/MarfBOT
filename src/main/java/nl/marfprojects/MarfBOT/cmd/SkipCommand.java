@@ -2,6 +2,7 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.core.EmbedBuilder;
 import nl.marfprojects.MarfBOT.Helpers;
@@ -17,6 +18,7 @@ public class SkipCommand extends Command {
     public SkipCommand() {
         this.name = "skip";
         this.help = "skip a song";
+        this.category = new Category("Music");
     }
 
     @Override
@@ -32,12 +34,12 @@ public class SkipCommand extends Command {
                 try {
                     i = Integer.parseInt(args[0]);
                     if (i > 50 || i < 1) {
-                        event.reply("... dude how hard is it to pick a number from 1 to 50");
+                        event.reply("Error invailid syntax. choose between 1 to 50.");
                         return;
                     }
                 } catch (NumberFormatException e) {
                     e.addSuppressed(e);
-                    event.reply("... dude how hard is it to pick a number from 1 to 50");
+                    event.reply("Error invailid syntax. choose between 1 to 50.");
                 }
             }
         }

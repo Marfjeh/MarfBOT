@@ -12,8 +12,6 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.TextChannel;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +38,6 @@ public class MusicManager {
     }
 
     public void loadTrack(final TextChannel channel, final String source) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
         MusicPlayer player = getPlayer(channel.getGuild());
         channel.getGuild().getAudioManager().setSendingHandler(player.getAudioHandler());
         manager.loadItemOrdered(player, source, new AudioLoadResultHandler() {

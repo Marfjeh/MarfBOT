@@ -3,20 +3,19 @@ package nl.marfprojects.MarfBOT;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.managers.AudioManager;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
 
-import java.awt.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.awt.Color;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Helpers {
 
-    public static long starttime;
-    public static Color EmbedColor = Color.decode("0x6EB0E0");
+    public static long	starttime;
+    public static Color EmbedColor		= Color.decode("0x6EB0E0");
+    public static Color EmbedColorError = Color.decode("0xF04747");
+    public static Color EmbedColorWarn	= Color.decode("0xFAA61A");
+    public static Color EmbedColorInfo	= Color.decode("0x43B581");
 
     public static String getDurationBreakdown(long millis) {
         if (millis < 0) {
@@ -58,32 +57,36 @@ public class Helpers {
 
         executor.execute(() -> {
             manager.closeAudioConnection();
-           Console.dlog("Terminated AudioConnection in " + manager.getGuild().getId());
+           Console.clog("MusicManager", "Terminated AudioConnection in " + manager.getGuild().getId());
         });
     }
 
     public static String getOnlineTime() {
         return getDurationBreakdown(System.currentTimeMillis() - starttime);
+        //TODO: broken, need to fix it.
     }
 
-    public static String getFooterStamp() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        return "ToxicMushroom | " + simpleDateFormat.format(date);
+    public static String getFooter() {
+        return "MarfBOT";
     }
-
-    public static String getFooterIcon() {
-        return "https://i.imgur.com/1wj6Jlr.png";
+    
+    /*
+     * Send a embed.
+     * @param String Title Set the title of the embed
+     * @param String Content set the content(setDescription) of the embed.
+     * @param TextChannel Channel getchannel.
+     * @param Color Type Color of the left side of the embed, available examples: EmbedColor = marfbot color
+     */
+    public static void sendEmbed(String Title, String Content, TextChannel Channel, Color Type) {
+    	EmbedBuilder builder = new EmbedBuilder();
+    	builder	.setColor(Type)
+        		.setDescription(Content)
+        		.setTitle(Title)
+        		.setFooter(getFooter(), null);
+        Channel.sendMessage(builder.build()).queue();
     }
-
-    public static void DefaultEmbed(String title, String Content, TextChannel channel) {
-        EmbedBuilder eb = new EmbedBuilder();
-        eb.setColor(EmbedColor);
-        eb.setDescription(Content);
-        eb.setTitle(title);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss");
-        Date date = new Date(System.currentTimeMillis());
-        eb.setFooter("MarfBOT", null);
-        channel.sendMessage(eb.build()).queue();
-    }
+    
+	private long getUsedMem() {
+		return Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+	}
 }

@@ -2,7 +2,7 @@ package nl.marfprojects.MarfBOT;
 
 public class Ref {
 	public static      Boolean MarfBOT_DickBot		= true; //For debugging use only. disable for production duh. also TODO: make this into a yml file.
-	public static	   Boolean MarfBOT_logChat		= true;
+	public static	   Boolean MarfBOT_logChat		= false;
 	public static final String MarfBOT_Token		= "MzU2NzI0Njg0Mjk5MTczODg5.DPTX3w.LFE2W6T4OaeKP2GBBb45EwMYp78";
 	public static final String MarfBOT_CLIENT_ID	= "356724684299173889";
 	public static final String MarfBOT_PREFIX 		= "]";

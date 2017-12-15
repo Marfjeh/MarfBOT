@@ -5,6 +5,8 @@ import java.util.Random;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
+
 import net.dv8tion.jda.core.EmbedBuilder;
 
 public class WeerCommand extends Command {
@@ -13,6 +15,7 @@ public class WeerCommand extends Command {
 		this.aliases = new String[]{"weather", "buienradar", "br", "radar", "rain"};
 		this.help = "Get a weather image of the current weather supported arguments: europe, eur, latvain, lv, cloud, wolken, thunder, onweer, usa.";
 		this.arguments = "<map>";
+		this.category = new Category("Random");
 	}
 	
 	protected void execute(CommandEvent event) {

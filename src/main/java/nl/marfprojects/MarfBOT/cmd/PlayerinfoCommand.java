@@ -2,6 +2,8 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import com.jagrosh.jdautilities.commandclient.Command.Category;
+
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.User;
@@ -15,6 +17,7 @@ public class PlayerinfoCommand extends Command {
     public PlayerinfoCommand() {
         this.name = "playerinfo";
         this.help = "Gives you info about a specific player.";
+        this.category = new Category("Info");
         this.aliases = new String[] { "profile", "userinfo", "memberinfo", "playerprofile" };
     }
 
