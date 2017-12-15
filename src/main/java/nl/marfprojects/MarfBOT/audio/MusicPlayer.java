@@ -1,9 +1,9 @@
 package nl.marfprojects.MarfBOT.audio;
 
-import nl.marfprojects.MarfBOT.Helpers;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.core.entities.Guild;
+import nl.marfprojects.MarfBOT.Helpers;
 
 public class MusicPlayer {
 

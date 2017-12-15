@@ -14,7 +14,7 @@ public class PsCommand extends Command{
 	}
 	
 	protected void execute(CommandEvent event) {
-		//TODO
+		
 	}
 
 }

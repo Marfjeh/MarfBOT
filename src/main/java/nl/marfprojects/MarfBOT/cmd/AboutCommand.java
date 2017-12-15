@@ -8,6 +8,8 @@ import net.dv8tion.jda.core.EmbedBuilder;
 import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.Ref;
 
+import java.awt.*;
+
 public class AboutCommand extends Command {
 
 	public AboutCommand() {

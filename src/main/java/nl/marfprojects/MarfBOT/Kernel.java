@@ -19,6 +19,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import net.dv8tion.jda.core.requests.SessionReconnectQueue;
 import nl.marfprojects.MarfBOT.cmd.*;
 
+
 public class Kernel extends ListenerAdapter {
 	public static JDA JDA;
 
@@ -38,7 +39,8 @@ public class Kernel extends ListenerAdapter {
 				new PingCommand(),
 				//Music
 				new PlayCommand(),
-				new PsCommand(),
+				new PlayerinfoCommand(),
+				//new PsCommand(),
 				new QueueCommand(),
 				new SkipCommand(),
 				new SkipXCommand(),
@@ -46,11 +48,10 @@ public class Kernel extends ListenerAdapter {
 				new VolumeCommand(),
 				new ClearCommand(),
 				//Random
-				new WeerCommand(),
+				new WeerCommand()
 				//Moderation
 				
 				//Debugging
-				new DebuggerCommand()
 		);
 
 		new JDABuilder(AccountType.BOT)

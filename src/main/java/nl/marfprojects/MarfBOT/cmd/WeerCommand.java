@@ -1,13 +1,13 @@
 package nl.marfprojects.MarfBOT.cmd;
 
-import java.awt.Color;
-import java.util.Random;
-
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
 import com.jagrosh.jdautilities.commandclient.Command.Category;
 
 import net.dv8tion.jda.core.EmbedBuilder;
+
+import java.awt.*;
+import java.util.Random;
 
 public class WeerCommand extends Command {
 	public WeerCommand() {
