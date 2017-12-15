@@ -1,10 +1,5 @@
 package nl.marfprojects.MarfBOT;
 
-import java.awt.Event;
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import javax.security.auth.login.LoginException;
 import com.jagrosh.jdautilities.commandclient.CommandClientBuilder;
 import com.jagrosh.jdautilities.waiter.EventWaiter;
 import net.dv8tion.jda.core.AccountType;
@@ -19,6 +14,11 @@ import net.dv8tion.jda.core.hooks.InterfacedEventManager;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import net.dv8tion.jda.core.requests.SessionReconnectQueue;
 import nl.marfprojects.MarfBOT.cmd.*;
+
+import javax.security.auth.login.LoginException;
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Kernel extends ListenerAdapter {
 	public static JDA JDA;
@@ -39,7 +39,7 @@ public class Kernel extends ListenerAdapter {
 				new PingCommand(),
 				new PlayCommand(),
 				new PlayerinfoCommand(),
-				new PsCommand(),
+				//new PsCommand(),
 				new QueueCommand(),
 				new SkipCommand(),
 				new SkipXCommand(),

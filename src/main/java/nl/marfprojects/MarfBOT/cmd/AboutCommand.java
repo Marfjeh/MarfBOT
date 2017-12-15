@@ -1,12 +1,12 @@
 package nl.marfprojects.MarfBOT.cmd;
 
-import java.awt.Color;
-
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
 import net.dv8tion.jda.core.EmbedBuilder;
 import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.Ref;
+
+import java.awt.*;
 
 public class AboutCommand extends Command {
 

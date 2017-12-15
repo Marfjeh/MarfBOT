@@ -2,23 +2,21 @@ package nl.marfprojects.MarfBOT.cmd;
 
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
+import net.dv8tion.jda.core.EmbedBuilder;
+import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.VoiceChannel;
 import nl.marfprojects.MarfBOT.Console;
 import nl.marfprojects.MarfBOT.Helpers;
 import nl.marfprojects.MarfBOT.Ref;
 import nl.marfprojects.MarfBOT.audio.MusicManager;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.VoiceChannel;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 public class PlayCommand extends Command {
 	public PlayCommand() {
 		this.name = "play";
 		this.help = "play a youtube link or direct .mp3 url (icecast supported)";
-		this.aliases = new String[] { "live", "youtube", "soundhound" };
+		this.aliases = new String[] { "live", "youtube", "soundhound", "ps", "psl"};
 		this.arguments = "<url/name>";
 	}
 
@@ -28,14 +26,12 @@ public class PlayCommand extends Command {
 	protected void execute(CommandEvent event) {
 		Guild guild = event.getGuild();
 		VoiceChannel sendervoiceChannel = guild.getMember(event.getAuthor()).getVoiceState().getChannel();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = new Date(System.currentTimeMillis());
 		String args[] = event.getArgs().split(" ");
 		if (args.length == 0 || args[0].equalsIgnoreCase("")) {// no args -> usage:
 			EmbedBuilder eb = new EmbedBuilder();
 			eb.setTitle("Error");
 			eb.setColor(Helpers.EmbedColor);
-			eb.setDescription("Invailid syntax. \n " + Ref.MarfBOT_PREFIX + " play [yt|sc|link] <url>");
+			eb.setDescription("Invailid syntax. Usage: \n " + Ref.MarfBOT_PREFIX + " play [yt|sc|link] <url>");
 			eb.addField("Legenda", "[] = optional" + "| = or" + "<> = needed", true);
 			eb.setFooter("MarfBOT", null);
 			event.reply(eb.build());
@@ -43,7 +39,7 @@ public class PlayCommand extends Command {
 		}
 		args[0] = args[0].toLowerCase();
 		String songname = Arrays.toString(args).replaceFirst("sc", "").replaceFirst("yt", "")
-				.replaceFirst("soundcloud", "").replaceFirst("youtube", "").replaceFirst("link", "")
+				.replaceFirst("soundcloud", "").replaceFirst("youtube", "").replaceFirst("path", "")
 				.replaceFirst("looplink", "");
 		if (sendervoiceChannel == null) {
 			EmbedBuilder eb = new EmbedBuilder();
@@ -60,9 +56,9 @@ public class PlayCommand extends Command {
 		if (args[0].equalsIgnoreCase("sc") || args[0].equalsIgnoreCase("soundcloud")) {
 			manager.loadTrack(event.getTextChannel(), "scsearch:" + songname);
 			Console.dlog("scsearch");
-		} else if (args[0].equalsIgnoreCase("link")) {
+		} else if (args[0].equalsIgnoreCase("path")) {
 			manager.loadTrack(event.getTextChannel(), args[(args.length - 1)]);
-			Console.dlog("secrets");
+			Console.dlog("secrets, "+ args[(args.length)] + " songname: "+ songname);
 		} else {
 			manager.loadTrack(event.getTextChannel(), "ytsearch:" + songname);
 		}

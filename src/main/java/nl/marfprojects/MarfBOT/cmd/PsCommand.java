@@ -3,7 +3,6 @@ package nl.marfprojects.MarfBOT.cmd;
 import com.jagrosh.jdautilities.commandclient.Command;
 import com.jagrosh.jdautilities.commandclient.CommandEvent;
 
-import nl.marfprojects.MarfBOT.SoundSystem;
 
 public class PsCommand extends Command{
 	
@@ -15,7 +14,7 @@ public class PsCommand extends Command{
 	}
 	
 	protected void execute(CommandEvent event) {
-		//TODO
+		
 	}
 
 }
