@@ -1,0 +1,11 @@
+{
+	"token": "", //token
+	"owner": "", //userid
+	"prefix": "", //prefix >_>
+	"status": "", //playing text inside discord
+
+	"mysql_host": "", //Mysql host
+	"mysql_user": "", //Username
+	"mysql_pass": "", //Password
+	"mysql_db": "" //database
+}
