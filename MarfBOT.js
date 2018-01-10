@@ -87,6 +87,16 @@ let embedMessage = function (type = NormColor, text, subtext, footer = "MarfBOT"
   return({embed});
 }
 
+let logo = function () {
+    console.log(
+  "  __  __             __ ____   ____ _______  \n" +
+  " |  \\/  |           / _|  _ \\ / __ \\__   __| \n" +
+  " | \\  / | __ _ _ __| |_| |_) | |  | | | |    \n" +
+  " | |\\/| |/ _` | '__|  _|  _ <| |  | | | |    \n" +
+  " | |  | | (_| | |  | | | |_) | |__| | | |    \n" +
+  " |_|  |_|\\__,_|_|  |_| |____/ \\____/  |_|    \n");
+}
+
 module.exports = {
   gettime,
   getdate,
@@ -101,5 +111,6 @@ module.exports = {
   embedMessage,
   NormColor,
   WarnColor,
-  ErroColor
+  ErroColor,
+  logo
 }

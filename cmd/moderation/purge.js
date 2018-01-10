@@ -7,7 +7,7 @@ class PurgeCommand extends commando.Command {
             name: 'purge',
             group: 'moderation',
             memberName: 'purge',
-            description: 'purge amound of messages. (Needs to be manualy enabled `]enable purge`)'
+            description: 'purge amound of messages. (Needs to be manualy enabled `]enable purge`)',
             userPermission: ['MANAGE_MESSAGES']
         });
     }
