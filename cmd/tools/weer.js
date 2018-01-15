@@ -1,4 +1,5 @@
-const commando = require('discord.js-commando');
+const commando = require('discord.js-commando'),
+      MarfBOT  = require('../../MarfBOT.js');
 
 class weerCommand extends commando.Command {
     constructor(client) {
@@ -37,7 +38,7 @@ class weerCommand extends commando.Command {
             //soon (TM)
         }
         else {
-            message.channel.send(":warning: Invailid argument!");
+            message.channel.send(MarfBOT.embedMessage(MarfBOT.ErroColor, ":warning: Invailid argument!"));
         }
 
         function sendmap(map_image, url_website, message_title) {
