@@ -112,7 +112,7 @@ bot.on('message', message => { //legacy Command-system. this does not use the di
 	}
 
 	if (message.content.includes('iOS') && Math.random() > 0.8) {
-		message.channel.send("Ios*");
+		message.channel.send({embed:{title: "Ios*", footer: "This joke™ was brought to you by MarfBOT™."}});
 	}
 
 	/*if (message.content.toLowercase().includes('linux') && !message.content.toLowercase().includes('gnu/linux') && Math.random() > 0.8) {
