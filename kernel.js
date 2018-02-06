@@ -13,11 +13,11 @@ const   Dcmd    = require("discord.js-commando"),
 let connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
 
 //Init
-MarfBOT.logo()
+MarfBOT.logo();
 MarfBOT.klog("MarfBOT² kernel init");
 MarfBOT.klog("Register commands...");
 Client.registry.registerGroups([
-    ['random', 'Random commands'],
+    ['random', 'Random commands (includes some legacy commands)'],
     ['moderation', 'Moderation commands'],
     ['music', 'music commands'],
     ['minecraft', 'minecraft stuff'],
@@ -53,7 +53,7 @@ Client
         })
         .on('reconnecting', () => { MarfBOT.wlog('Reconnecting...'); })
         .on('commandError', (cmd, err) => {
-                if(err instanceof commando.FriendlyError) return;
+                if(err instanceof Dcmd.FriendlyError) return;
                 MarfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
         })
         .on('commandBlocked', (msg, reason) => {
@@ -82,11 +82,9 @@ Client
                         ${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
                 `); })
         .on('message', message => {
-            var roll = Math.floor(Math.random() * 4) + 1;
-            if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
-            var random_ans =  Math.random().toFixed(2);
+            if (message.content.includes("[answers are given in 2 decimals]") && Math.random() > 0.8) { //Math battles EasterEgg, It's random.
                 message.reply("Really, you agian?! My parser sucks so i'll just take a random guess...");
-                message.channel.send(".take " + random_ans);
+                message.channel.send(".take " + Math.random().toFixed(2));
             }
 
             if (message.content.includes("8===>")) { //dickbot EasterEgg.
@@ -94,13 +92,13 @@ Client
             }
 
             if (message.content.includes('iOS') && Math.random() > 0.8) {
-                message.channel.send({embed:{title: "Ios*", footer: "This joke™ was brought to you by MarfBOT™."}});
+                message.channel.send(MarfBOT.embedMessage(MarfBOT.getColor(1), "Ios*", null, "This joke™ was brought to you by MarfBOT™"));
             }
         });
 
 //Kernel Functions
 function ConnectionWatchDog() {
-
+//Todo
 }
 
 function CrashHandler(exception) {
@@ -124,7 +122,6 @@ function Exit(Exitcode = 0) {
     MarfBOT.wlog("Exiting MarfBOT with Exitcode: " + Exitcode + " and destroying Discord connection...");
     try { Client.destroy(); }
     catch(eception) { }
-
     process.exit(Exitcode);
 }
 
@@ -136,7 +133,7 @@ function BootBOT() {
         Client.setProvider(new MySQLProvider(db));
         MarfBOT.clog("WThDoG", "Init ConnectionWatchDog");
         ConnectionWatchDog();
-        MarfBOT.nlog("Connecting to Discord...")
+        MarfBOT.nlog("Connecting to Discord...");
         Client.login(Settings.token);
     });
 }
