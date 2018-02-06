@@ -10,7 +10,7 @@ const   Dcmd    = require("discord.js-commando"),
         MarfBOT = new Marflib();
 
 //Local Vars
-var connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
+let connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
 
 //Init
 MarfBOT.logo()
@@ -81,7 +81,22 @@ Client
                         ${enabled ? 'enabled' : 'disabled'}
                         ${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
                 `); })
-        .on('message', message => {});
+        .on('message', message => {
+            var roll = Math.floor(Math.random() * 4) + 1;
+            if (message.content.includes("[answers are given in 2 decimals]") && roll == 2) { //Math battles EasterEgg, It's random.
+            var random_ans =  Math.random().toFixed(2);
+                message.reply("Really, you agian?! My parser sucks so i'll just take a random guess...");
+                message.channel.send(".take " + random_ans);
+            }
+
+            if (message.content.includes("8===>")) { //dickbot EasterEgg.
+                //message.channel.send(MarfBOT.embedMessage(MarfBOT.getColor(1), "dickbot", "Yes! " +  + " Please make me yours and put it in me!"));
+            }
+
+            if (message.content.includes('iOS') && Math.random() > 0.8) {
+                message.channel.send({embed:{title: "Ios*", footer: "This joke™ was brought to you by MarfBOT™."}});
+            }
+        });
 
 //Kernel Functions
 function ConnectionWatchDog() {
@@ -107,7 +122,9 @@ function RestartBOT() {
 
 function Exit(Exitcode = 0) {
     MarfBOT.wlog("Exiting MarfBOT with Exitcode: " + Exitcode + " and destroying Discord connection...");
-    Client.destroy();
+    try { Client.destroy(); }
+    catch(eception) { }
+
     process.exit(Exitcode);
 }
 
