@@ -23,7 +23,9 @@ Client.registry.registerGroups([
     ['minecraft', 'minecraft stuff'],
     ['tools', 'tool commands']
 ])
-.registerDefaults()
+.registerDefaultTypes()
+    .registerDefaultGroups()
+    .registerDefaultCommands({eval_: true})
 .registerCommandsIn(Path.join(__dirname, 'cmd'));
 BootBOT();
 
