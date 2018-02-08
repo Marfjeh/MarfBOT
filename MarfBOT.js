@@ -27,7 +27,7 @@ class MarfBOT {
  	}
 
 	logo() {
-		console.log(
+		return(
 			"  __  __             __ ____   ____ _______  \n" +
 			" |  \\/  |           / _|  _ \\ / __ \\__   __| \n" +
 			" | \\  / | __ _ _ __| |_| |_) | |  | | | |    \n" +
@@ -39,6 +39,10 @@ class MarfBOT {
 	embedMessage(type = NormColor, text, subtext = "", footer = "MarfBOT") {
 		const embed = new Discord.RichEmbed().setColor(type).setTitle(text).setDescription(subtext).setFooter(footer);
 		return({embed});
+	}
+
+	sendembedMessage(message, type, text, subtext, footer) {
+		message.channel.send(this.embedMessage(type, text, subtext, footer));
 	}
 
 	getDay(){

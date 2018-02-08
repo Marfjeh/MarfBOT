@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando'),
       Discord  = require('discord.js'),
-      MarfLib  = require('../../MarfBOT.js'),
-      MarfBOT  = new MarfLib(),
+      MarfLib  = require('../../MarfBOT.js'), MarfBOT  = new MarfLib(),
       MySQL    = require('mysql2/promise');
 
 class SettingCommand extends commando.Command {

@@ -6,20 +6,21 @@ const   Dcmd    = require("discord.js-commando"),
         MySQLProvider = require('discord.js-commando-mysqlprovider'),
         Settings = require("./settings.json"),
         stdin   = process.openStdin(),
-        Client  = new Dcmd.Client({commandPrefix: Settings.prefix, owner: Settings.owner})
+        music = require('discord.js-music-v11');
+        Client  = new Dcmd.Client({commandPrefix: Settings.prefix, owner: Settings.owner, unknownCommandResponse: false});
         MarfBOT = new Marflib();
 
 //Local Vars
 let connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
 
 //Init
-MarfBOT.logo();
+console.log(MarfBOT.logo());
 MarfBOT.klog("MarfBOT² kernel init");
 MarfBOT.klog("Register commands...");
 Client.registry.registerGroups([
     ['random', 'Random commands (includes some legacy commands)'],
     ['moderation', 'Moderation commands'],
-    ['music', 'music commands'],
+    //['music', 'music commands'],
     ['minecraft', 'minecraft stuff'],
     ['tools', 'tool commands']
 ])
@@ -28,6 +29,7 @@ Client.registry.registerGroups([
     .registerDefaultCommands({eval_: true})
 .registerCommandsIn(Path.join(__dirname, 'cmd'));
 BootBOT();
+
 
 //Events.
 process 
@@ -59,26 +61,26 @@ Client
                 MarfBOT.elog(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
         })
         .on('commandBlocked', (msg, reason) => {
-                MarfBOT.wlog(oneLine`
+                MarfBOT.wlog(`
                         Command ${msg.command ? `${msg.command.groupID}:${msg.command.memberName}` : ''}
                         blocked; ${reason}
                 `);
         })
         .on('commandPrefixChange', (guild, prefix) => {
-                MarfBOT.nlog(oneLine`
+                MarfBOT.nlog(`
                         Prefix ${prefix === '' ? 'removed' : `changed to ${prefix || 'the default'}`}
                         ${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
                 `);
         })
         .on('commandStatusChange', (guild, command, enabled) => {
-                MarfBOT.nlog(oneLine`
+                MarfBOT.nlog(`
                         Command ${command.groupID}:${command.memberName}
                         ${enabled ? 'enabled' : 'disabled'}
                         ${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
                 `);
         })
         .on('groupStatusChange', (guild, group, enabled) => {
-                MarfBOT.nlog(oneLine`
+                MarfBOT.nlog(`
                         Group ${group.id}
                         ${enabled ? 'enabled' : 'disabled'}
                         ${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
@@ -136,6 +138,7 @@ function BootBOT() {
         MarfBOT.clog("WThDoG", "Init ConnectionWatchDog");
         ConnectionWatchDog();
         MarfBOT.nlog("Connecting to Discord...");
+        music(Client, {prefix: "]"});
         Client.login(Settings.token);
     });
 }
