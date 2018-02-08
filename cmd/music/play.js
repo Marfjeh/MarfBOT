@@ -4,7 +4,7 @@ const   commando = require('discord.js-commando'),
         ytdl = require('ytdl-core'),
         client = new discord.Client();
 
-class PlayCommand extends commando.Command {
+module.exports = class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'play',
@@ -31,6 +31,4 @@ class PlayCommand extends commando.Command {
             .catch(marfBOT.elog);
         }
     }
-}
-
-module.exports = PlayCommand;
+};

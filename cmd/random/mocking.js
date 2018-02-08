@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class mockingCommand extends commando.Command {
+module.exports = class mockingCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'mocking',
@@ -31,6 +31,4 @@ class mockingCommand extends commando.Command {
             }
         });
     }
-}
-
-module.exports = mockingCommand;
+};

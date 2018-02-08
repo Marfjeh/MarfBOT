@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class ballCommand extends commando.Command {
+module.exports = class ballCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: '8ball',
@@ -40,6 +40,4 @@ class ballCommand extends commando.Command {
 
         message.channel.send("8Ball says: " + answares[Math.floor(Math.random()*answares.length)]);
     }
-}
-
-module.exports = ballCommand;
+};

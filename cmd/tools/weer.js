@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando'),
       MarfBOT  = require('../../MarfBOT.js');
 
-class weerCommand extends commando.Command {
+module.exports = class weerCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'weer',
@@ -56,6 +56,5 @@ class weerCommand extends commando.Command {
                 });
         }
     }
-}
+};
 
-module.exports = weerCommand;

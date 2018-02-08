@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-class PurgeCommand extends commando.Command {
+module.exports = class PurgeCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'purge',
@@ -16,6 +16,4 @@ class PurgeCommand extends commando.Command {
         let messagecount = parseInt(args) + 1;
             message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
     }
-}
-
-module.exports = PurgeCommand;
+};

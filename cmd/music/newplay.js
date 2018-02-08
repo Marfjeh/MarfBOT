@@ -21,7 +21,7 @@ function nextQueue() {}
 function clearQueue() {}
 
 
-class PlayCommand extends commando.Command {
+module.exports = class PlayCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'newplay',
@@ -52,6 +52,4 @@ class PlayCommand extends commando.Command {
             message.channel.send(MarfBOT.embedMessage(MarfBOT.getColor(2), "Error", "Error dumped to console."));
         }
     }
-}
-
-module.exports = PlayCommand;
+};

@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando'),
       MarfBOT = require("../../MarfBOT.js");
 
-class InviteCommand extends commando.Command {
+module.exports = class InviteCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'invite',
@@ -17,6 +17,4 @@ class InviteCommand extends commando.Command {
                                 "[Invite MarfBOT to your server](https://discordapp.com/oauth2/authorize?client_id=263948498351685632&scope=bot&permissions=3333120")
             );
     }
-}
-
-module.exports = InviteCommand;
+};

@@ -3,7 +3,7 @@ const commando = require('discord.js-commando'),
       MarfLib  = require('../../MarfBOT.js'), MarfBOT  = new MarfLib(),
       MySQL    = require('mysql2/promise');
 
-class SettingCommand extends commando.Command {
+module.exports = class SettingCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'setting',
@@ -24,6 +24,4 @@ class SettingCommand extends commando.Command {
 
 
     }
-}
-
-module.exports = SettingCommand;
+};

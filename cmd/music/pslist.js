@@ -2,7 +2,7 @@ const commando = require('discord.js-commando'),
       marfBOT = require("../../MarfBOT-Legacy.js"),
       fs = require("fs");
 
-class pslistCommand extends commando.Command {
+module.exports = class pslistCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'pslist',
@@ -32,6 +32,4 @@ class pslistCommand extends commando.Command {
         });
       }
 
-}
-
-module.exports = pslistCommand;
+};

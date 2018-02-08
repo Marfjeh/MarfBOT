@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class LamaCommand extends commando.Command {
+module.exports = class LamaCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'lama',
@@ -41,6 +41,4 @@ class LamaCommand extends commando.Command {
 "    ;:   .   .     ;8 :Xt.     .       .```");
                                           
     }
-}
-
-module.exports = LamaCommand;
+};

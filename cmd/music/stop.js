@@ -2,7 +2,7 @@ const   commando = require('discord.js-commando'),
         marfBOT = require("../../MarfBOT-Legacy.js");
 
 
-class StopCommand extends commando.Command {
+module.exports = class StopCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'stop',
@@ -22,6 +22,4 @@ class StopCommand extends commando.Command {
         }
         
     }
-}
-
-module.exports = StopCommand;
+};

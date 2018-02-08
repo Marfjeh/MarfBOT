@@ -1,12 +1,12 @@
 const commando = require('discord.js-commando');
 
-class BotnetCommand extends commando.Command {
+module.exports =  class BotnetCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'botnet',
             group: 'random',
             memberName: 'botnet',
-            description: 'a \g\ approved message.'
+            description: 'a \\g\\ approved message.'
         });
     }
 
@@ -43,6 +43,4 @@ class BotnetCommand extends commando.Command {
       "   | |\n" +
       "   |_|\n\n```");
     }
-}
-
-module.exports = BotnetCommand;
+};

@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class BotnetCommand extends commando.Command {
+module.exports = class BotnetCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'macfag',
@@ -20,6 +20,4 @@ class BotnetCommand extends commando.Command {
  "|_|  |_/_/    \\_\\_____|_|/_/    \\_\\_____| \n```");
                                           
     }
-}
-
-module.exports = BotnetCommand;
+};

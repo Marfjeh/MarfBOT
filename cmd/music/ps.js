@@ -3,7 +3,7 @@ const   commando = require('discord.js-commando'),
         discord = require("discord.js"),
         MusicFolder = __dirname + "/../../assets/sounds/";
 
-class PsCommand extends commando.Command {
+module.exports = class PsCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'ps',
@@ -40,6 +40,4 @@ class PsCommand extends commando.Command {
             }
         }
     }
-}
-
-module.exports = PsCommand;
+};

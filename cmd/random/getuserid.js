@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class getnameCommand extends commando.Command {
+module.exports =  class getnameCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'getuserid',
@@ -14,6 +14,4 @@ class getnameCommand extends commando.Command {
       message.author.send("Your user id is: ```" + message.author + "```");
       message.reply("Send you a DM with your ID.");
     }
-}
-
-module.exports = getnameCommand;
+};

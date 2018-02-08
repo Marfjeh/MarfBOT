@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando'),
       marfBOT  = require("../../MarfBOT.js");
 
-class BugReportCommand extends commando.Command {
+module.exports = class SecretCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'secret',
@@ -17,6 +17,4 @@ class BugReportCommand extends commando.Command {
         marfBOT.nlog("removed a message: <" + message.author.username + "> " + args);
         
     }
-}
-
-module.exports = BugReportCommand;
+};

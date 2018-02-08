@@ -6,12 +6,11 @@ const   Dcmd    = require("discord.js-commando"),
         MySQLProvider = require('discord.js-commando-mysqlprovider'),
         Settings = require("./settings.json"),
         stdin   = process.openStdin(),
-        music = require('discord.js-music-v11');
-        Client  = new Dcmd.Client({commandPrefix: Settings.prefix, owner: Settings.owner, unknownCommandResponse: false});
+        Client  = new Dcmd.Client({commandPrefix: Settings.prefix, owner: Settings.owner, unknownCommandResponse: false}),
         MarfBOT = new Marflib();
 
 //Local Vars
-let connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
+connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
 
 //Init
 console.log(MarfBOT.logo());
@@ -20,13 +19,13 @@ MarfBOT.klog("Register commands...");
 Client.registry.registerGroups([
     ['random', 'Random commands (includes some legacy commands)'],
     ['moderation', 'Moderation commands'],
-    //['music', 'music commands'],
+    ['music', 'music commands'],
     ['minecraft', 'minecraft stuff'],
     ['tools', 'tool commands']
 ])
 .registerDefaultTypes()
-    .registerDefaultGroups()
-    .registerDefaultCommands({eval_: true})
+.registerDefaultGroups()
+.registerDefaultCommands({eval_: true})
 .registerCommandsIn(Path.join(__dirname, 'cmd'));
 BootBOT();
 
@@ -138,14 +137,13 @@ function BootBOT() {
         MarfBOT.clog("WThDoG", "Init ConnectionWatchDog");
         ConnectionWatchDog();
         MarfBOT.nlog("Connecting to Discord...");
-        music(Client, {prefix: "]"});
         Client.login(Settings.token);
     });
 }
 
 //Console
 stdin.addListener("data", function(d) {
-        readline = d.toString().trim();
+    readline = d.toString().trim();
     switch (readline) {
                 case("exit"):
                     process.exit(0);
@@ -161,3 +159,6 @@ stdin.addListener("data", function(d) {
                 break;
     }
 });
+
+//Exports because fidgetspinner hurrdurr
+exports.Client = Client;

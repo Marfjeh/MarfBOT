@@ -9,20 +9,15 @@ const bootstrapper = require("./kernel.js"),
 	  Settings = require("./settings.json");
 
 
-class MarfBOT {
+module.exports = class MarfBOT {
 	getColor(num) {
 		switch(num) {
 		 case 0:
 		 	return 0x7289DA;
-		 break;
 		 case 1:
 		 	return 0xFAA61A;
-		 break;
 		 case 2:
 		 	return 0xF04747;
-		 break;
-		 default:
-		 	return 0x7289DA;
 		}
  	}
 
@@ -75,5 +70,3 @@ class MarfBOT {
 	dlog(message) { if(Settings.DebugLog == true) { this.clog("DEBUG ", message); } }
 	clog(type, message) { console.log("["+type+"|" + this.getTime() + "] " + message); }
 }
-
-module.exports = MarfBOT;

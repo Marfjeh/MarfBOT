@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-class MuntCommand extends commando.Command {
+module.exports =  class MuntCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'flip',
@@ -24,6 +24,4 @@ class MuntCommand extends commando.Command {
 
         }
     }
-}
-
-module.exports = MuntCommand;
+};
