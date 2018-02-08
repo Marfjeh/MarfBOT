@@ -13,6 +13,4 @@ module.exports = class JoinCommand extends commando.Command {
     async run(message, args) {
         message.member.voiceChannel.join();
     }
-}
-
-module.exports = JoinCommand;
+};

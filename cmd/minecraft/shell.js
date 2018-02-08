@@ -12,11 +12,11 @@ class shellCommand extends commando.Command {
     
     async run(message, args) {
     
-    if (message.author == "<@218310787289186304>")
+    if (message.author === "<@218310787289186304>")
     {
         
-        var exec = require('child_process').exec;
-        var coffeeProcess = exec('tail -f /home/marf/Cloud9/mc/logs/latest.log ---disable-inotify');
+        let exec = require('child_process').exec;
+        let coffeeProcess = exec('tail -f /home/marf/Cloud9/mc/logs/latest.log ---disable-inotify');
     
         coffeeProcess.stdout.on('data', function(data) {
             message.channel.sendMessage(data);

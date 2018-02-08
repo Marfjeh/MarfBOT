@@ -5,11 +5,11 @@ module.exports = class UserInfoCommand extends commando.Command {
     constructor(client) {
         super(client, {
             name: 'user-info',
-            aliases: ['user', '🗒'],
+            aliases: ['user'],
             group: 'tools',
             memberName: 'user-info',
             description: 'Gets information about a user.',
-            examples: ['user-info @Crazymarf@0020', 'user-info Crazymarf'],
+            examples: ['user-info @Crazymarf#0020', 'user-info Crazymarf'],
             guildOnly: true,
 
             args: [

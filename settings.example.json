@@ -1,11 +1,16 @@
 {
-	"token": "", //token
-	"owner": "", //userid
-	"prefix": "", //prefix >_>
-	"status": "", //playing text inside discord
+	"token": "",
+	"owner": "",
+	"prefix": "",
+	"status": "",
+	"WatchdogConnection": 5000,
+	"DebugLog": false,
 
-	"mysql_host": "", //Mysql host
-	"mysql_user": "", //Username
-	"mysql_pass": "", //Password
-	"mysql_db": "" //database
+	"mysql_host": "",
+	"mysql_user": "",
+	"mysql_pass": "",
+	"mysql_db": "",
+
+	"music_volume": 1.0,
+	"music_autoleave": false
 }

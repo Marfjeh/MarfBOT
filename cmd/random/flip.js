@@ -11,17 +11,9 @@ module.exports =  class MuntCommand extends commando.Command {
     }
 
     async run(message, args) {
-        var roll = Math.floor(Math.random() * 2) + 1;
-        switch (roll) {
-          case 1:
+        if (Math.floor(Math.random() * 2) + 1 === 1)
             message.reply("Tails!");
-            break;
-
-            case 2:
-            message.reply("Heads!");
-            break;
-          default:
-
-        }
+        else
+            return message.reply("Heads!");
     }
 };

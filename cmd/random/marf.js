@@ -11,9 +11,8 @@ module.exports = class reetenCommand extends commando.Command {
             description: 'A hidden command.'
         });
     }
-
     async run(message, args) {
-        if (marfBOT.minmax(1, 5, parseInt(args)) == true) {
+        if (marfBOT.minmax(1, 5, parseInt(args)) === true) {
        message.channel.send({
         "embed": {
                 "image": {
@@ -22,11 +21,7 @@ module.exports = class reetenCommand extends commando.Command {
             }
         });
         }
-        else
-        {
-            message.channel.sendMessage("Maximaal 1 t/m 5!");
-        }
-            
+        else message.channel.sendMessage("Maximaal 1 t/m 5!");
     }
 
 };

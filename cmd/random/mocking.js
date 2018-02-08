@@ -13,7 +13,7 @@ module.exports = class mockingCommand extends commando.Command {
 
     async run(message, args) {
         function mocking(text) {
-            let returntext = "";
+            returntext = "";
             for(const char of text) {
                 returntext += (Math.random() > 0.4 ? char.toUpperCase() : char.toLowerCase());
             }

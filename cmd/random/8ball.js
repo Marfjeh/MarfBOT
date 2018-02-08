@@ -11,10 +11,6 @@ module.exports = class ballCommand extends commando.Command {
     }
 
     async run(message, args) {
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1));
-        }
-
         let answares = [
             'It is certain',
             'It is decidedly so',
@@ -37,7 +33,6 @@ module.exports = class ballCommand extends commando.Command {
             'Outlook not so good',
             'Very doubtful'
         ];
-
         message.channel.send("8Ball says: " + answares[Math.floor(Math.random()*answares.length)]);
     }
 };
