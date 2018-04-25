@@ -1,13 +1,14 @@
 const   Dcmd    = require("discord.js-commando"),
         Discord = require("discord.js"),
         Path    = require("path"),
-        Marflib = require("./MarfBOT.js"),
+        Marflib = require("./Providers/MarfBOT.Helper.js"),
         MySQL   = require('mysql2/promise'),
         MySQLProvider = require('discord.js-commando-mysqlprovider'),
         Settings = require("./settings.json"),
         stdin   = process.openStdin(),
         Client  = new Dcmd.Client({commandPrefix: Settings.prefix, owner: Settings.owner, unknownCommandResponse: false}),
-        MarfBOT = new Marflib();
+        MarfBOT = new Marflib(),
+        MarfBOT_Legacy = require("./Providers/MarfBOT.Helper-Legacy.js");
 
 //Local Vars
 connected = false; //This is because Client.status doesnt report the correct status of the current connection, this is a tempway to fix the issue.
@@ -162,3 +163,5 @@ stdin.addListener("data", function(d) {
 
 //Exports because fidgetspinner hurrdurr
 exports.Client = Client;
+exports.MarfBOT = MarfBOT;
+exports.MarfBOT_Legacy = MarfBOT_Legacy;
